@@ -88,9 +88,6 @@ SELECT DATE_PART('quarter', CURRENT_DATE) -- RETURNS 1 // [1-4 arasi deger alir]
 #### AGE:
 ```sql
 SELECT AGE(CURRENT_DATE, timestamp '1998-08-17') -- RETURNS 21 years 7 mons 9 days
-
-SELECT EXTRACT(year FROM age(CURRENT_DATE,'1998-08-17'))*12 + EXTRACT(month FROM age(CURRENT_DATE,'1998-08-17')) as months -- RETURNS 259 // bu islem bize iki tarih arasinda kac ay oldugunu bulur.
-
 ```
 
 #### EXTRACT:
@@ -116,6 +113,12 @@ Ayın birinci günlerinde yapılan toplam sipariş adetini getirmek.
 select count(*) as total_orders from orders
 WHERE
 EXTRACT(day FROM shipped_date) = 01
+```
+
+İki tarih arasındaki ay sayısını bulma.
+
+```sql
+SELECT EXTRACT(year FROM age(CURRENT_DATE,'1998-08-17'))*12 + EXTRACT(month FROM age(CURRENT_DATE,'1998-08-17')) as months -- RETURNS 259
 ```
 
 
