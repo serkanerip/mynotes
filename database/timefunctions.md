@@ -2,7 +2,9 @@
 
 
 SQL'de kullanabileceğimiz yararlı fonksiyonlar ve örnekler. 
-Postgresql üzerinde yapılmıştır örnekler. Diğer veritabanı yazılımları üzerinde farklılıklar gösterebilir.
+
+Postgresql üzerinde yapılmıştır örnekler.
+Diğer veritabanı yazılımları üzerinde farklılıklar gösterebilir.
 
 Veritabanı Yazılımı: <b>PostgreSQL 12.2 (Debian 12.2-2.pgdg100+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 8.3.0-6) 8.3.0, 64-bit</b>
 
@@ -32,11 +34,6 @@ Veritabanı Timezone Değiştirme Kalıcı Olarak:
    - DATE_PART
    - AGE
    - EXTRACT
-
-
-  - Sadece SELECT sorgusu yapılabilir
-  - ORDER BY yapılamaz
-  - Çağırırken aynı tablo SELECT eder gibi sorgu yazabiliriz.
 
 
 
