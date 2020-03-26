@@ -125,6 +125,12 @@ as months -- RETURNS 259
 ```
 
 
+## Operatörler
+
+
+![Operators](/assets/operators.png) Picture from [postgresql.org](https://www.postgresql.org)
+
+
 ## Kaynakçalar:
 
 - https://www.postgresql.org/docs/8.0/functions-datetime.html
