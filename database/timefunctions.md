@@ -118,7 +118,10 @@ EXTRACT(day FROM shipped_date) = 01
 İki tarih arasındaki ay sayısını bulma.
 
 ```sql
-SELECT EXTRACT(year FROM age(CURRENT_DATE,'1998-08-17'))*12 + EXTRACT(month FROM age(CURRENT_DATE,'1998-08-17')) as months -- RETURNS 259
+SELECT 
+EXTRACT(year FROM age(CURRENT_DATE,'1998-08-17')) * 12 
++ EXTRACT(month FROM age(CURRENT_DATE,'1998-08-17'))
+as months -- RETURNS 259
 ```
 
 
