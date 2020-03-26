@@ -12,12 +12,18 @@ Views, bir sanal tablodur. Asıl tablolarımıza yaptığımız kompleks statik(
     CREATE VIEWS [VIEW_NAME] AS [QUERY]
 ```
 
-### Example:
+### Örnek:
 
 
 ```sql
     CREATE VIEWS vSelectOrderWithDetails AS 
         SELECT o.*, od.customer_name, od.ship_city FROM orders o, orderdetails od
+```
+
+### Kullanım:
+
+```sql
+    SELECT * from public.vSelectOrderWithDetails
 ```
 
 ### Kaynakçalar:
