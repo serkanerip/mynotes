@@ -128,7 +128,9 @@ as months -- RETURNS 259
 ## Operatörler
 
 
-![Operators](/assets/operators.png) Picture from [postgresql.org](https://www.postgresql.org)
+![Operators](/assets/operators.png) 
+
+**Picture from [postgresql.org](https://www.postgresql.org)**
 
 
 ## Kaynakçalar:
