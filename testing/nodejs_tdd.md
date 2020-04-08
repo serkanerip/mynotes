@@ -2,6 +2,8 @@
 
 Jest kütüphanesi ile Nodejs'de TDD uygulayarak basit bir uygulama yapacağız.
 
+Bu makalede yapılan uygulamanın tamamlanmış haline bu [link](https://github.com/serkanerip/TDD_Example)'ten ulaşabilirsiniz.
+
 Yapacağımız uygulama:
 
 - PostgreSQL üzerinde users adlı bir tablomuz olacak.
@@ -19,7 +21,8 @@ Boilerplate:
 foo@bar:~$ mkdir testing-kata
 foo@bar:~$ cd testing-kata
 foo@bar:~$ npm init -y
-foo@bar:~$ npm install --save-dev jest
+foo@bar:~$ npm install jest --save-dev
+foo@bar:~$ npm install pg --save
 foo@bar:~$ touch index.js
 foo@bar:~$ mkdir src __test__
 ```
@@ -33,6 +36,7 @@ foo@bar:~$ touch User.test.js UserRepository.test.js UserService.test.js
 Öncelikle User modelimiz için test yazıcağız.
 
 User.test.js
+
 ```js
 const User = require("../src/model/User");
 
@@ -47,6 +51,7 @@ describe("User Model Tests", () => {
 ```
 
 Şimdi testimizi çalıştıralım.
+
 ```bash
 ./node_modules/.bin/jest __test__/User.test.js --watch
 ```
@@ -79,6 +84,7 @@ Time:        0.346s, estimated 1s
 Testimiz beklediğimiz gibi fail oldu şimdi testimizin geçmesi için kodumuzu yazıyoruz.
 
 /src/model/User.js
+
 ```js
 const User = () => {
   return { name: "", userName: "", password: "" };
@@ -104,7 +110,7 @@ Ran all test suites matching /__test__\/User.test.js/i.
 UserRepository için şimdi test yazıcağız.
 UserRepository postgresql işlemleri için pg modülünü kullanacak. Unit test yazdığımız için testimizin pg modülünü de kapsamaması için pg modülünü mocklamamız gerekiyor.
 
-**__test__/UserRepository.test.js**
+\***\*test**/UserRepository.test.js\*\*
 
 ```js
 const { Pool } = require("pg");
@@ -128,20 +134,19 @@ jest.mock("pg", () => {
 ```
 
 Pg modülünün Pool nesnesi bir constructor function ve bu da query, release ve daha bir çok metod geri döndermektedir.
-Bizim ihtiyacımız olanlar şuanda query ve release o yüzden bunlarıda mockluyoruz. 
-
+Bizim ihtiyacımız olanlar şuanda query ve release o yüzden bunlarıda mockluyoruz.
 
 Şimdi repositoryimizde kullanacağımız metodları belirleyelim:
-* getAll
-* find
-* create
-* deleteUser -> delete keywordü js tarafından kullanıldığı için kullanamıyoruz.
-* update
 
+- getAll
+- find
+- create
+- deleteUser -> delete keywordü js tarafından kullanıldığı için kullanamıyoruz.
+- update
 
 Şimdi bu fonksiyonlar için gerekli testlerimizi yazalım.
 
-**__test__/UserRepository.test.js**
+\***\*test**/UserRepository.test.js\*\*
 
 ```js
 const { Pool } = require("pg");
@@ -172,14 +177,14 @@ describe("User Repository Tests", () => {
     client = await pool.connect();
     client.query.mockResolvedValueOnce({ rows: [], rowCount: 0 });
   });
-  
+
   test("should give all users as array", async () => {
     const dbResult = await userRepository.getAll(client);
     expect(client.query).toBeCalledTimes(1);
     expect(client.query).toBeCalledWith("SELECT * FROM users");
     expect(dbResult).toHaveProperty("rows");
   });
-  
+
   test("should give rowCount key 1 value", async () => {
     const dbResult = await userRepository.find(client, "serkanerip");
     expect(dbResult).toHaveProperty("rows");
@@ -210,7 +215,6 @@ describe("User Repository Tests", () => {
     expect(client.query).toBeCalledTimes(1);
   });
 });
-
 ```
 
 Testlerimizi yazdık, fonksiyonlarımızın hepsi database ile işlem yapabilmeleri için pg modülünden oluşturduğumuz client
@@ -279,7 +283,6 @@ module.exports = {
   deleteUser,
   update,
 };
-
 ```
 
 Şimdi tekrardan test dosyamızı çalıştıralıp sonuçları görelim.
@@ -308,7 +311,8 @@ Burada'da testimizin sadece UserService birimini test etmesi için iki adet mock
 UserRepository fonksiyonunu kullanacaği için servisimiz bu repoyu mocklamamız lazım. Ve bu repo fonksiyonlarıda parametre olarak
 pg modülünden oluşturulan client nesnesini aldığı için bunuda mocklamamız gerekiyor.
 
-**__test__/UserService.test.js**:
+\***\*test**/UserService.test.js\*\*:
+
 ```js
 const { Pool } = require("pg");
 const userService = require("../src/service/UserService");
@@ -349,12 +353,12 @@ describe("User Service Tests", () => {
     client = {};
   });
 });
-
 ```
 
 Test dosyamızı, testlerimizi yapmak için hazırladık şimdi testlerimizi yazmaya geçelim.
 
-**__test__/UserService.test.js**:
+\***\*test**/UserService.test.js\*\*:
+
 ```js
 const { Pool } = require("pg");
 const userService = require("../src/service/UserService");
@@ -454,9 +458,7 @@ describe("User Service Tests", () => {
     expect(deleteUser()).rejects.toThrow();
   });
 });
-
 ```
-
 
 Test dosyamızın son hali bu şekilde olacaktır şimdi bu testlerimizi çalıştıralım bakalım.
 
@@ -467,10 +469,10 @@ Test dosyamızın son hali bu şekilde olacaktır şimdi bu testlerimizi çalı�
   <font color="#AAAAAA">Ran all test suites matching /__test__\/UserService.test.js/i.</font>
   </pre>
 
-
 Evet testlerimiz fail oldu beklediğimiz gibi şimdi bu testlerin geçmesi için gereken kodları yazalım.
 
 **src/service/UserService.js**:
+
 ```js
 async function getAll(client, userRepo) {
   let dbResult;
@@ -505,7 +507,6 @@ module.exports = {
   create,
   deleteUserByUsername,
 };
-
 ```
 
 UserService metodlarımızı yazdık şimdi testlerimizi tekrardan çalıştıralım ve sonuçlara bakalım.
@@ -529,15 +530,14 @@ UserService metodlarımızı yazdık şimdi testlerimizi tekrardan çalıştıra
 
 Ve görüldüğü üzere testlerimiz başarıyla geçti.
 
-
 ## İmplementasyon
 
 Şimdi gerekli implementasyonları yapıp uygulamamızı bir deniyelim. Öncelikle ihtiyacımız olan şey pg modülünden bir client
 nesnesi oluşturmamız gerekiyor testlerimizde mocklayarak fonksiyonlarımıza yollamıştık ancak gerçekten veritabanı işlemleri
 yapmak istiyorsak ihtiyacımız olacak.
 
-
 **src/db.js**:
+
 ```js
 const { Pool } = require("pg");
 
@@ -583,20 +583,9 @@ void (async function () {
 
   await rollbackTransaction(client);
 })();
-
 ```
-
 
 Evet yazının sonuna geldik. Burada yazının çok uzamaması için her testin tek tek açıklamasını yapmıyorum
 anlayabilecek düzeyde olduğunuz varsayılmıştır. Eğer anlamadığınız noktalar olursa benimle iletişime geçmekten çekinmeyin.
 
 Happy Codding :-)
-
-
-
-
-
-
-
-
-
