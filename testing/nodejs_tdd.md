@@ -35,7 +35,7 @@ foo@bar:~$ touch User.test.js UserRepository.test.js UserService.test.js
 
 Öncelikle User modelimiz için test yazıcağız.
 
-User.test.js
+**User.test.js**:
 
 ```js
 const User = require("../src/model/User");
@@ -81,9 +81,9 @@ Snapshots:   0 total
 Time:        0.346s, estimated 1s
 ```
 
-Testimiz beklediğimiz gibi fail oldu şimdi testimizin geçmesi için kodumuzu yazıyoruz.
+Testimiz beklediğimiz gibi fail oldu şimdi testimizin geçmesi için kodumuzu yazıyoruz. :collision:
 
-/src/model/User.js
+**/src/model/User.js**:
 
 ```js
 const User = () => {
@@ -110,7 +110,7 @@ Ran all test suites matching /__test__\/User.test.js/i.
 UserRepository için şimdi test yazıcağız.
 UserRepository postgresql işlemleri için pg modülünü kullanacak. Unit test yazdığımız için testimizin pg modülünü de kapsamaması için pg modülünü mocklamamız gerekiyor.
 
-\***\*test**/UserRepository.test.js\*\*
+**UserRepository.test.js**:
 
 ```js
 const { Pool } = require("pg");
@@ -146,7 +146,7 @@ Bizim ihtiyacımız olanlar şuanda query ve release o yüzden bunlarıda mocklu
 
 Şimdi bu fonksiyonlar için gerekli testlerimizi yazalım.
 
-\***\*test**/UserRepository.test.js\*\*
+**UserRepository.test.js**:
 
 ```js
 const { Pool } = require("pg");
@@ -234,7 +234,7 @@ Time:        0.447s, estimated 1s
 Ran all test suites matching /__test__\/UserRepository.test.js/i.
 ```
 
-Gördüğümüz üzere bütün testlerimiz fail oldu çıktı mesajı burda gördüğünüzden daha uzun olacak çünkü hataları barındıracak.
+Gördüğümüz üzere bütün testlerimiz fail :collision: oldu çıktı mesajı burda gördüğünüzden daha uzun olacak çünkü hataları barındıracak.
 Şimdi bu testlerin geçmesi için kodları yazmaya başlıyalım.
 
 **./src/repository/UserRepository.js**:
@@ -285,7 +285,7 @@ module.exports = {
 };
 ```
 
-Şimdi tekrardan test dosyamızı çalıştıralıp sonuçları görelim.
+Tekrardan test dosyamızı çalıştıralıp sonuçları görelim.
 
 **Sonuçlar**:
 
@@ -311,7 +311,7 @@ Burada'da testimizin sadece UserService birimini test etmesi için iki adet mock
 UserRepository fonksiyonunu kullanacaği için servisimiz bu repoyu mocklamamız lazım. Ve bu repo fonksiyonlarıda parametre olarak
 pg modülünden oluşturulan client nesnesini aldığı için bunuda mocklamamız gerekiyor.
 
-\***\*test**/UserService.test.js\*\*:
+**UserService.test.js**:
 
 ```js
 const { Pool } = require("pg");
@@ -357,7 +357,7 @@ describe("User Service Tests", () => {
 
 Test dosyamızı, testlerimizi yapmak için hazırladık şimdi testlerimizi yazmaya geçelim.
 
-\***\*test**/UserService.test.js\*\*:
+**UserService.test.js**:
 
 ```js
 const { Pool } = require("pg");
@@ -469,7 +469,7 @@ Test dosyamızın son hali bu şekilde olacaktır şimdi bu testlerimizi çalı�
   <font color="#AAAAAA">Ran all test suites matching /__test__\/UserService.test.js/i.</font>
   </pre>
 
-Evet testlerimiz fail oldu beklediğimiz gibi şimdi bu testlerin geçmesi için gereken kodları yazalım.
+Evet testlerimiz fail :collision: oldu beklediğimiz gibi şimdi bu testlerin geçmesi için gereken kodları yazalım.
 
 **src/service/UserService.js**:
 
@@ -509,7 +509,7 @@ module.exports = {
 };
 ```
 
-UserService metodlarımızı yazdık şimdi testlerimizi tekrardan çalıştıralım ve sonuçlara bakalım.
+UserService metodlarımızı yazdık testlerimizi tekrardan çalıştıralım ve sonuçlara bakalım.
 
 **Sonuçlar**:
 
@@ -529,6 +529,12 @@ UserService metodlarımızı yazdık şimdi testlerimizi tekrardan çalıştıra
 <font color="#AAAAAA">Ran all test suites matching /__test__\/UserService.test.js/i.</font></pre>
 
 Ve görüldüğü üzere testlerimiz başarıyla geçti.
+
+## Açıklamalar
+
+* describe: İlişkili testlerimizi bir arada yazabilmek için describe altında yazıyoruz.
+* test: Testimizi yazdığımız alan.
+* beforeEach: Bu fonksiyon her testimizden önce yapılması gereken işlemleri yapmamıza yarıyor.
 
 ## İmplementasyon
 
@@ -586,6 +592,8 @@ void (async function () {
 ```
 
 Evet yazının sonuna geldik. Burada yazının çok uzamaması için her testin tek tek açıklamasını yapmıyorum
-anlayabilecek düzeyde olduğunuz varsayılmıştır. Eğer anlamadığınız noktalar olursa benimle iletişime geçmekten çekinmeyin.
+anlayabilecek düzeyde olduğunuz varsayılmıştır. 
 
-Happy Codding :-)
+Eğer anlamadığınız noktalar olursa benimle iletişime geçmekten çekinmeyin.
+
+Happy Codding :tada: :tada:
