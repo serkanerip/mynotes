@@ -1,5 +1,8 @@
 # NodeJS Ile TDD
 
+
+![](https://source.unsplash.com/1600x900/?coding)
+
 Jest kütüphanesi ile Nodejs'de TDD uygulayarak basit bir uygulama yapacağız.
 
 Bu makalede yapılan uygulamanın tamamlanmış haline bu [link](https://github.com/serkanerip/TDD_Example)'ten ulaşabilirsiniz.
