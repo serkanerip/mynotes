@@ -88,7 +88,7 @@ baz.showX(); // RET: baz
 - Execution Context'in mantığından anladığımız üzere bir contextin memory nesnesi VO lardır.
 - Direk olarak bu VO nesnesine kodla erişimimiz yoktur.Ancak scope chain sayesinde erişebiliyoruz.
 - Biz bir fonksiyon çağırdığımızda ve o fonksiyon return ettikten sonra o VO ya artık erişimimiz olmamaktadır. Çünkü onun VO'suna ancak child contextler erişebiliyordu.
-- Bizde fonksiyon içinde fonksiyon dönderince inner fonksiyon bitmiş olsada onun VO'su child fonksiyonun scope chainine eklenmiş olacak. Bu sayede scope'umuz bu parent fonksiyonun oluşturmuş olduğu VO'ya erişimi hala devam edecektir.
+- Bizde fonksiyon içinde fonksiyon dönderince parent fonksiyon bitmiş olsada onun oluşturduğu VO child fonksiyonun scope chainine eklenmiş olacak. Bu sayede oluşan child fonksiyon hala parent fonksiyonun VO'suna erişebilecek.
 
 ### Ex
 
@@ -104,7 +104,7 @@ function GenerateIterator(arr) {
 const arr = [1, 2, 3, 4];
 const arrIterator = GenerateIterator(arr);
 console.log(arrIterator.next()); // 1
-console.log(arrIterator.next()); // 1
+console.log(arrIterator.next()); // 2
 ```
 
 ## Kaynaklar
