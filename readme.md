@@ -12,6 +12,6 @@ Keyifli okumalar.
 
 Hesaplarım:
 
-1. [twitter](twitter.com/eripserkan)
-2. [linkedin](linkedin.com/in/serkanerip)
-3. [github](github.com/serkanerip)
+1. [twitter](https://twitter.com/eripserkan)
+2. [linkedin](https://linkedin.com/in/serkanerip)
+3. [github](https://github.com/serkanerip)
