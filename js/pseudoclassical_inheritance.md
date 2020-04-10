@@ -44,3 +44,12 @@ m1.special();
 m1.sayName();
 m1.breath();
 ```
+
+
+
+Notlar:
+
+* Her fonksiyonun bir prototype'ı olur.
+* Bunun içinde constructor anahtarı bulunur bu da fonksiyonun kendisine işaret eder.
+* Nesnelerin proto anahtarı onu oluşturan fonksiyonun prototype'ına işaret eder.
+* **Object.create fonksiyonu yeni bir nesne oluşturur ve oluşturduğu nesnesinin proto anahtarına parametre olarak aldığı nesneyi atar.**
