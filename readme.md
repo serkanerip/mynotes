@@ -1,8 +1,10 @@
 Merhabalar, Ben Serkan Erip.
 
-Burada bilgisayar mühendisliği ağırlıklı yazılım öğrenim sürecim boyunca (ki bu bitmeyen bir süreç) aldığım notları bulabilirsiniz.
+Burada yazılım öğrenim sürecim boyunca (ki bu bitmeyen bir süreç) aldığım notları bulabilirsiniz.
 
 Notlarımı alırken düzenli bir şekilde almaya çalışıyorum amacım başkalarınında faydalanabilmesi ve benimde notlarımın kalıcı ve her yerden erişilebilir olması.
+
+Notlarımın altında kullandığım kaynakları bulabilirsiniz.
 
 Şuanda notlarım Türkçe aralarında ingilizce cümleler barındırabilir karışık yazıyorum.
 
