@@ -1,16 +1,43 @@
 # My Dictionary
 
-* Preface: Önsöz, Başlangıç
-* Occur: meydana gelmek, vuku bulmak.
-  * a problem occur -> sorun oluşması
-* Exciting: Heyecan verici
-  * sound exciting  -> Kulağa heyecanlı gelmek
-  * exciting book -> heyecanlı kitap
-* Fascinating: Büyüleyici, Hayran Eden
-  * it looks facinating -> müthiş görünüyor.
-* Convey: iletmek, geçirmek, ulaştırmak
-  * convey an apology -> özür sunmak.
-* whilst: iken
-  * the whilst -> bu arada
-* obstacle: mani, engel
-  * have an obstacle -> engele takılmak.
+- **Preface: Önsöz, Başlangıç**
+- **Occur: meydana gelmek, vuku bulmak.**
+  - a problem occur -> sorun oluşması
+- **Exciting: Heyecan verici**
+  - sound exciting -> Kulağa heyecanlı gelmek
+  - exciting book -> heyecanlı kitap
+- **Fascinating: Büyüleyici, Hayran Eden**
+  - it looks facinating -> müthiş görünüyor.
+- **Convey: iletmek, geçirmek, ulaştırmak**
+  - convey an apology -> özür sunmak.
+- **whilst: iken**
+  - the whilst -> bu arada
+- **obstacle: mani, engel**
+  - have an obstacle -> engele takılmak.
+- **construct: yapı**
+  - There's a construct for everything.
+- **cohesive: bağlı**
+  - A generally cohesive group of code can be called a component.
+- **consistent: tutarlı, istikrarlı**
+- **recite: ezberden okumak, sayıp dökmek**
+  - He recites names, dates, places and conversations from childhood up to now.
+- **inadequacy: eksiklik, yetersizlik**
+  - I'm inadequate in software architectures
+- **consultant: danışman**
+  - Frontend consultant
+- **expedite: hızlandırmak, yollamak**
+  - I expedite my english learning process.
+- **internalize: özümsemek**
+  - I learned in school, but probably never internalized.
+- **influence: tesir etmek, etkilemek**
+- **Although: rağmen, karşı**
+- **craft: zanaat**
+- **crafting: üretmek**
+- **taught: öğretilen**
+- **remarkable: dikkat çekici, göze çarpan**
+- **phenomenon: olgu, olay**
+- **executive: yönetsel, idari**
+- **lack ve ya deficiency: yokluk, eksiklik**
+- **equate: kıyaslamak**
+  - I equate software design to playing midfield in soccer.
+- **foresee: önceden görmek, ileriyi görmek**
