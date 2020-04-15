@@ -38,6 +38,11 @@
 - **phenomenon: olgu, olay**
 - **executive: yönetsel, idari**
 - **lack ve ya deficiency: yokluk, eksiklik**
-- **equate: kıyaslamak**
+- **equate: kıyaslamak, benzemtek**
   - I equate software design to playing midfield in soccer.
 - **foresee: önceden görmek, ileriyi görmek**
+- **thought: düşünce, fikir**
+- **Intention: maksat, kasıt**
+  - Intention of a variable should be clear from it's name
+- **adequate: yeterli, kafi**
+- **tedious: sıkıcı, meşakatli**
