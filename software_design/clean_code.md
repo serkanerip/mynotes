@@ -4,7 +4,7 @@
 
 - Bir değişkenin ve fonksiyonun maksatı isminden anlaşılmalıdır.
 - İsimler telafuz edilebilir olmalıdır.
-- İsimlendirmeler tam olarak yaptığı herşeyi açıklamalıdır bu uzun bir isme denk gelse de eğer isimlendirmekte zorlanıyorsanız refactor zamanı gelmiştir demektir.
+- İsimlendirmeler tam olarak yaptığı herşeyi açıklamalıdır bu uzun bir isme denk gelse bile. Eğer isimlendirmekte zorlanıyorsanız refactor zamanı gelmiştir demektir.
 - İsimlendirmeler yanlış bilgi vermemelidir.List, set gibi sıfatları sadece değişken o tipteyse kullanmalıyız. Onun yerine collection, group gibi isimler tercih etmeliyiz.
 - Aranabilir değişkenler ve sabitler kullanılmalıdır.
   ```python
