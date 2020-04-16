@@ -46,3 +46,15 @@
   - Intention of a variable should be clear from it's name
 - **adequate: yeterli, kafi**
 - **tedious: sıkıcı, meşakatli**
+- **divorced: ayrılmış, boşanmış**
+- **stakeholder: ilgili kimse, menfaat sahibi**
+- **proportional: orantılı, oranlı**
+- **attitude: tavır, tutum, düşünce**
+- **convincing: inandırıcı, ikna edici**
+- **urgent: acil, ivedi**
+- **struggle: mücadele etmek, çabalamak**
+- **conceive: tasarlamak**
+- **notion: düşünce, görüş**
+- **fabulous: efsanevi, olağanüstü**
+- **appreciate: değerini arttırmak, takdir etmek**
+- **charm: albeni, cazibe**
