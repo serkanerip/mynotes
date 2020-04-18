@@ -37,3 +37,58 @@ Bu yüzden sistemimizi tekrar kullanılabilir küçük parçalardan oluşturmam�
 Basit ve aptal(kolay anlaşılır) tut demektir. Yani bir yazılımı geliştirirken basit ve anlaşılır tutmak daha sonra sizin bu uygulamayı geliştirirken ve ya başkalarının yazdığınız kodu okuması için harcayacağı eforu ve zamanı azaltabilirsiniz. Buda yazılımcıların daha üretken olmasını sağlar.
 
 **Unutmayın kod bir defa yazılır bir çok defa okunur. O yüzden okunabilir kod yazmak önemlidir.**
+
+### YAGNI Principle
+
+**You Ain't Gonna Need It**
+
+Birşeyleri gerçekten ihtiyacınız olduğu zaman projenize ekleyin ileride kullanırım diye değil.
+Unutmayın ne kadar çok kod o kadar bug o ve kadar maintain edilmesi zor bir sistemdir.
+
+Bu prensip kısaca bizden bunu istemektedir.
+
+### SOLİD Principles
+
+SOLID, uncle bob tarafından ortaya atılmış nesne tabanlı tasarımın ilk 5 prensibinin kısaltmasıdır.
+
+Bu prensiplerin kullanılmasıyla kolayca geliştirilebilen ve sürdürülebilen yazılımlar geliştirebiliriz.
+
+#### Single Responsibility Principle
+
+**Bir modül, sadece bir sebepten dolayı değişmelidir.**
+
+Modül en basit anlamıyla bir kaynak dosyasıdır.
+
+Bir sınıf düşünelim Employee adında bunun calculatePay, reportHours ve save adında 3 metodu bulunsun.
+
+calculatePay ve reportHours metodlarının ortak bir algoritma kullandıklarını varsayalım bu algoritmada regularHours adında private bir metod üzerinde çalışıyor.
+
+Bir aktör calculatePay üzerindeki hesaplamanın değişmesini istedi ve bir takım bu işe girişti ve bu düzenlemeyi yapmak için regularHours fonksiyonunu düzenlediler. Bu metodu reportHours metodununda kullandıklarını göremediler ve bu sorunu çözüp kapattılar.
+
+Daha sonra baktılarki raporlarda hatalı sonuçlar var çünkü regularHours metodu hesaplama biçim değişti ve bu reportHours metodunu etkiledi ve bu da birilerinin çok zarar etmesine sebeb oldu.
+
+**Gördüğümüz gibi bir class farklı işler yapıyor ve bu yüzden birden fazla sebeble değişebiliyor. Buda hatalar ve buglara sebeb olabiliyor.**
+
+#### Open Closed Principle
+
+**Bir yazılım yeniliklere açık, değişimlere kapalı olmalıdır.**
+
+Yani bir yazılım, eski kodları silmeden, değiştirmeden genişleyebilmeli.
+
+Bu prensibe bizim yazılım mimarisi geliştirmemizin temel nedeni diyebiliriz.
+
+**Ex:**
+
+Düşünün, bir sistemimiz var finansal raporları web sayfası üzerinde görüntülüyor. Web sayfası scroll edilebiliyor ve negatif rakamlar kırmızı ile yazılmış.
+
+Daha sonra bizden bu raporun siyah-beyaz çıktı olarak çıkarılabilmesinin istendiğini düşünün. Negatif rakamlar bu seferde parantez içinde yazılmalı.
+
+İyi bir yazılım çok az bir değişilikle bu yeniliği ekleyebilir ideal olanı sıfır değişiklik.
+
+Peki Nasıl ?
+
+Farklı sebeblerle değişen şeyleri düzgün bir şekilde ayırmak (SRP) ve bunlar arasındaki bağımlılıkları iyi yönetmek.(DIP)
+
+FinancalReportData adında bir superclass olduğunu düşünün ve bundan türetilmiş WebReporter ve PrintReporter adında 2 sınıf.
+
+Bu şekilde kodumuzda çok fazla efor sarfetmeden ve diğer çalışan yerleri bozmadan yenilik ekliyebiliriz.
