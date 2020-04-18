@@ -58,3 +58,8 @@
 - **fabulous: efsanevi, olağanüstü**
 - **appreciate: değerini arttırmak, takdir etmek**
 - **charm: albeni, cazibe**
+- **urge: dürtü, dürtmek**
+- **accessor: erişimci**
+- **derive: türetmek, çıkarmak**
+  - Abstract classes are base classes from which other classes may be derived
+- **acronym: kısaltma**
