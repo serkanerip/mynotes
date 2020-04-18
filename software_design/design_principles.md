@@ -92,3 +92,20 @@ Farklı sebeblerle değişen şeyleri düzgün bir şekilde ayırmak (SRP) ve bu
 FinancalReportData adında bir superclass olduğunu düşünün ve bundan türetilmiş WebReporter ve PrintReporter adında 2 sınıf.
 
 Bu şekilde kodumuzda çok fazla efor sarfetmeden ve diğer çalışan yerleri bozmadan yenilik ekliyebiliriz.
+
+#### Liskov Substitution Principle
+
+LSP, özünde şunu anlatmaktadır; Alt sınıflardan oluşan nesnelerin, üst sınıfın nesneleri ile yer değiştirdiğinde aynı davranışı sergilemesi beklenmektedir.
+
+#### Interface Segregation Principle
+
+Herşeyi ihtiva eden interface sınıflar yerine belli bir işlemi yapan interface sınıflar oluşturulmalıdır.
+
+#### Dependency Inversion Principle
+
+Bağımlılıklar soyut sınıflara doğru olmalıdır.
+
+# References
+
+1. Clean Architecture Book Written By Robert C. Martin (Uncle BOB)
+2. http://www.kurumsaljava.com/2011/12/30/solid/
