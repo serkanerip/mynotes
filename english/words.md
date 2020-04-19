@@ -63,3 +63,4 @@
 - **derive: türetmek, çıkarmak**
   - Abstract classes are base classes from which other classes may be derived
 - **acronym: kısaltma**
+- **entangle: dolaşık, karmaşık**
