@@ -6,7 +6,7 @@
 
 ```scala
 val myNum = {
-    println('hi');
+    println("hi");
     1337
 }
 ```
