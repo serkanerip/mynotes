@@ -1,5 +1,20 @@
 # General Notes About Scala
 
+## Val, Def, Lazy Val
+
+- Val, değişmeyen bir değer oluşturur.
+
+```scala
+val myNum = {
+    println('hi');
+    1337
+}
+```
+
+- Burada myNum değişkeninini kullanmasakta println satırı çalışır ve 1337 değeri atanır myNum'a.
+- Def ile belirlenen değişkenlerin bloğu çağırıldığı zaman çalışır.
+- Lazy val, def ile val arasında bir tiptir. İlk çağırıldığında def gibi çalışır ancak sonraki çağırımlarında val gibi davranır.
+
 ## Array
 
 #### Array Oluşturma
@@ -95,6 +110,65 @@ println(5.+(6)) // 11
 
 - Scalada operatorler(+,-,/,\*) birer fonksiyondur.
 
+## Classes
+
+```scala
+class Rational(n: Int, d: Int) {
+  val isDenominatorZero = d != 0;
+  require(isDenominatorZero);
+  override def toString: String = s"Rational $n/$d"
+}
+```
+
+- Scalada sınıfların gövdesi constructor fonksiyonudur diyebiliriz.
+- Constructor parametreleri yukarıda gösterildiği gibi yazılır.
+- require metodu constructor parametrelerimizi kontrol edip bunların doğruluğunu check etmemizi sağlar eğer false olursa içindeki expression exception fırlatır.
+- Sınıf parametrelerine, sınıfın metodları içinden erişemeyiz. Bunları bir field'a assign etmeliyiz.
+- def this şeklinde başka constructorlar oluşturabiliriz ancak bu constructorlar primary constructorı çağırmalıdır.
+- Superclass constructorlarını sadece primary constructor çağırabilir.
+- +,\*,/,- Gibi metodlar yazıp kullanabiliriz sınıflarımızda.
+
+## Control Structures
+
+- If, while, for, try, match and function calls.
+- Scalada kontrol yapıları bir değer dönderirler.
+
+## Functions
+
+- Scalada first-class fonksiyonlar vardır.
+- Fonksiyonları değişkenlere atıyabiliriz, parametra olarak verebiliriz ve return edebiliriz.
+- Fonksiyon içinde fonksiyon yazabiliriz.
+- Closurelar scalada da vardır.
+
+## Placeholder Syntax
+
+- Scalada önemli bir özelliktir. Bir çok işlevi vardır. `_`
+- Placeholder parametrelerin yerini tutarak gereksiz detayları yazmamamızı sağlar.
+- İlk placeholder ilk parametre, ikincisi ikinci parametre ....
+- İlk parametreyi 2 defa kullanayım şeklide bir kullanım yapamazsınız.
+
+**Örnekler:**
+
+```scala
+val r = 0 to 100;
+var sum = 0;
+
+r.map(_*_); // EQ= r.map(x => x * x)
+r.reduce(_*_) // EQ= r.filter((x,y) => x * y)
+r.reduce((x, y) => x + y / x min y); // Bunu placeholder ile yapamayız.
+val f = (_: Int) + (_: Int) // EQ= val f = (x, y) => x + y;
+r.foreach(sum += _)
+```
+
+## Repeated Parameters
+
+```scala
+def main(args: String*) = println(args); // birden fazla String ogesi alabilir.
+val arr = Array("What's", "up", "doc?");
+echo(arr) // Hata verir cünkü bizden istenen array degil en az bir String nesnesi
+echo(arr: _*) // _* Sembolü ile bu arrayi spread edebiliriz. JS deki ...arr gibi
+```
+
 ## Imperative To Functional
 
 #### EX 1
@@ -130,6 +204,25 @@ for (line <- lines)
 val longestLine = lines.reduceLeft(
    (a, b) => if (a.length > b.length) a else b
  )
+```
+
+#### EX3
+
+**CHECK ANY NEG EXISTS IN NUMBER LIST**
+
+```scala
+
+// IMPERATIVE
+def containsNeg(nums: List[Int]): Boolean = {
+    var exists = false
+    for (num <- nums)
+      if (num < 0)
+        exists = true
+    exists
+}
+
+// FUNCTIONAL
+def containsNeg(nums: List[Int]): Boolean = nums.exists(_ < 0)
 ```
 
 # Resources
