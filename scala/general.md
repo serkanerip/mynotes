@@ -139,11 +139,20 @@ class Rational(n: Int, d: Int) {
 - def this şeklinde başka constructorlar oluşturabiliriz ancak bu constructorlar primary constructorı çağırmalıdır.
 - Superclass constructorlarını sadece primary constructor çağırabilir.
 - +,\*,/,- Gibi metodlar yazıp kullanabiliriz sınıflarımızda.
+- Superclass'ta parameterless bir metod varsa bunu türeyen sınıfta val haline getirebiliriz.
+- Bir sınıfın metodunu alt sınıfların override etmemesini istiyorsak metodun başına final keywordünü eklemeliyiz, eğer sınıfdan başka bir sınıf türemesin istiyorsak sınıfın başına final keywordü eklemeliyiz.
 
 ## Abstract Classes
 
 - abstract class MyClass şeklinde yazılır.
 - Metodlarının abstract olması için javadaki gibi abstract keywordünü kullanmamız gerekmiyor implementasyonu bulunmuyorsa bunu abstract olarak görür compiler.
+
+## Namespaces
+
+- 2 adet namespace bulunmaktadır scalada.
+  1. values (fields, methods, packages, and singleton objects)
+  2. types (class and trait names)
+- Aynı namespacete bulunan misal bir field ve metod aynı ismi taşıyamazlar.
 
 ## Control Structures
 
@@ -245,6 +254,27 @@ def containsNeg(nums: List[Int]): Boolean = {
 
 // FUNCTIONAL
 def containsNeg(nums: List[Int]): Boolean = nums.exists(_ < 0)
+```
+
+#### EX4
+
+```scala
+
+// IMPERATIVE
+def beside(that: Element): Element = {
+    val newElementContents = new Array[String](this.contents.length)
+    for (i <- 0 until newElementContents.length)
+      newElementContents(i) = this.contents(i) + that.contents(i)
+    new ArrayElement(newElementContents)
+}
+
+def beside(that: Element): Element = {
+    new ArrayElement(
+      for(
+        (line1, line2) <- this.contents.zip(that.contents)
+      ) yield line1 + line2
+    )
+}
 ```
 
 # Resources
