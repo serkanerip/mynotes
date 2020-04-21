@@ -15,6 +15,18 @@ val myNum = {
 - Def ile belirlenen değişkenlerin bloğu çağırıldığı zaman çalışır.
 - Lazy val, def ile val arasında bir tiptir. İlk çağırıldığında def gibi çalışır ancak sonraki çağırımlarında val gibi davranır.
 
+## Types
+
+- Bir değişkenin tipi yapabileceklerini belirler.
+- Any tipini olabildiğince kullanmamak lazım. Neden ?
+
+```scala
+val myNumberWithAnyType:Any = 10;
+println(myNumberWithAnyType / 2); // COMPILER ERROR!!!
+```
+
+- Yukarıdaki örnek compiler hatası verecektir. Çünkü / operatörü(metodu) Any tipi için geçerli değildir.
+
 ## Array
 
 #### Array Oluşturma
@@ -128,6 +140,11 @@ class Rational(n: Int, d: Int) {
 - Superclass constructorlarını sadece primary constructor çağırabilir.
 - +,\*,/,- Gibi metodlar yazıp kullanabiliriz sınıflarımızda.
 
+## Abstract Classes
+
+- abstract class MyClass şeklinde yazılır.
+- Metodlarının abstract olması için javadaki gibi abstract keywordünü kullanmamız gerekmiyor implementasyonu bulunmuyorsa bunu abstract olarak görür compiler.
+
 ## Control Structures
 
 - If, while, for, try, match and function calls.
@@ -139,6 +156,11 @@ class Rational(n: Int, d: Int) {
 - Fonksiyonları değişkenlere atıyabiliriz, parametra olarak verebiliriz ve return edebiliriz.
 - Fonksiyon içinde fonksiyon yazabiliriz.
 - Closurelar scalada da vardır.
+
+## Parameterless Methods
+
+- Parametresiz ve side effect bulunmayan metodlarda kullanılmalıdır.
+- myArray.length == myArray.length()
 
 ## Placeholder Syntax
 

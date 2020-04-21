@@ -65,3 +65,4 @@
 - **acronym: kısaltma**
 - **entangle: dolaşık, karmaşık**
 - **Glossary: Sözlük**
+- **Loan: Borç, ödünç vermek**
