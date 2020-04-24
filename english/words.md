@@ -18,41 +18,49 @@
   - There's a construct for everything.
 - **cohesive: bağlı**
   - A generally cohesive group of code can be called a component.
-- **consistent: tutarlı, istikrarlı**
-- **recite: ezberden okumak, sayıp dökmek**
+- **consistent:** tutarlı, istikrarlı (Always behaving or happening in a similar)
+  - He produces work of a consistent high quality.
+- **recite:** ezberden okumak, sayıp dökmek
   - He recites names, dates, places and conversations from childhood up to now.
-- **inadequacy: eksiklik, yetersizlik**
+- **inadequacy:** eksiklik, yetersizlik
   - I'm inadequate in software architectures
-- **consultant: danışman**
+- **consultant:** danışman
   - Frontend consultant
-- **expedite: hızlandırmak, yollamak**
+- **expedite:** hızlandırmak, yollamak
   - I expedite my english learning process.
-- **internalize: özümsemek**
+- **internalize:** özümsemek
   - I learned in school, but probably never internalized.
-- **influence: tesir etmek, etkilemek**
-- **Although: rağmen, karşı**
+- **influence:** tesir etmek, etkilemek (The power on to have an effect on people or things)
+  - He has a huge amount of influence over the city council
+- **Although:** rağmen, karşı
+  - He decided to go, although I begged to him not to.
 - **craft: zanaat**
 - **crafting: üretmek**
 - **taught: öğretilen**
 - **remarkable: dikkat çekici, göze çarpan**
 - **phenomenon: olgu, olay**
 - **executive: yönetsel, idari**
-- **lack ve ya deficiency: yokluk, eksiklik**
+- **lack or deficiency:** yokluk, eksiklik
+  - Lack of sleep had made him irritable.
 - **equate: kıyaslamak, benzemtek**
   - I equate software design to playing midfield in soccer.
 - **foresee: önceden görmek, ileriyi görmek**
-- **thought: düşünce, fikir**
+- **thought**: düşünce, fikir (The act of thinking, or considering something)
+  - Ask me again tomorrow. I'll have to give it some thought.
 - **Intention: maksat, kasıt**
   - Intention of a variable should be clear from it's name
 - **adequate: yeterli, kafi**
-- **tedious: sıkıcı, meşakatli**
+- **tedious:** sıkıcı, meşakatli (boring)
+  - Learning a new computer program can be a tedious process.
 - **divorced: ayrılmış, boşanmış**
 - **stakeholder: ilgili kimse, menfaat sahibi**
 - **proportional: orantılı, oranlı**
-- **attitude: tavır, tutum, düşünce**
+- **attitude:** tavır, tutum, düşünce (Feeling or opinion about something or someone)
+  - It's often very difficult to change people's attitude.
 - **convincing: inandırıcı, ikna edici**
 - **urgent: acil, ivedi**
-- **struggle: mücadele etmek, çabalamak**
+- **struggle**: mücadele etmek, çabalamak (to experience difficulty and make a very great effort in order to do something)
+  - I have been struggling to learn functional programming.
 - **conceive: tasarlamak**
 - **notion: düşünce, görüş**
 - **fabulous: efsanevi, olağanüstü**
@@ -69,4 +77,7 @@
 - **Foreign: Yabancı**
   - Functional programing is still foreign to many
 - **consumption: tüketim, kullanım**
-- **mitigate: Azaltmak, hafifletmek**
+- **mitigate:** Azaltmak, hafifletmek (To make something less harmfull or bad)
+  - It's unclear how to mitigate the effects of tourism on the island.
+- **essentially:** Özünde, temelde (relating to most important characteristics)
+  - What he's saying is essetinaly true.
