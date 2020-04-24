@@ -69,3 +69,4 @@
 - **Foreign: Yabancı**
   - Functional programing is still foreign to many
 - **consumption: tüketim, kullanım**
+- **mitigate: Azaltmak, hafifletmek**
