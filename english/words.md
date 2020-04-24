@@ -66,3 +66,6 @@
 - **entangle: dolaşık, karmaşık**
 - **Glossary: Sözlük**
 - **Loan: Borç, ödünç vermek**
+- **Foreign: Yabancı**
+  - Functional programing is still foreign to many
+- **consumption: tüketim, kullanım**

@@ -147,6 +147,47 @@ class Rational(n: Int, d: Int) {
 - abstract class MyClass şeklinde yazılır.
 - Metodlarının abstract olması için javadaki gibi abstract keywordünü kullanmamız gerekmiyor implementasyonu bulunmuyorsa bunu abstract olarak görür compiler.
 
+## Case Classes
+
+- Case sınıfların karşılaştırması alanlarının eşitliği üzerinden yapılır
+- New keywordüne ihtiyaç duymadan nesne oluşturabiliriz.
+- Pattern matching ile güçlü bir kullanım sağlanabilir.
+- Constructor parametreleri, sınıfın üyeleri haline gelir ve immutabledırlar.
+- Kopyalanabilirler.
+- toString, equals, apply, unapply metodları ile birlikte gelir.
+
+## Traits
+
+- Traitler, alan ve metod tanımlamalarının yapıldığı, classlarla kullanılabilen bir yapıdır.
+- Bir sınıf sadece bir süper sınıfı extends edebilirken birden fazla traiti extends edebilir.
+- Traitler, javadaki interfacelere benzetebiliriz.
+- Extends ve ya with keywordleri ile sınıflara mix edilebilir.
+- Sınıfların sahip olduğu tüm şeyleri yapabilir 2 durum dışında
+  1. Constructor parametresi alamazlar.
+  2. ???
+
+## Sealed
+
+- Sealed, keywordü sınıf ve ya trait'in nerelerde extend edilebileceğini belirler.
+- Implementasyonu ve alt sınıfları kaynak kod ile aynı dosyada olmak zorundadır.
+- Compiler bir dosyada tüm implementasyonların yapıldığını bildiği için pattern match gibi kullanımlarda ele alınmayan case var ise önceden uyarır.
+
+## Generic Types
+
+- Bir sınıfa ve ya fonksiyona tip bağımsız işlem yaptırma gücü kazandırır.
+- class Stack[A] => Burada A her hangi bir tip olabilir sınıf içindede metodlarda bu tipi kullanabiliriz bu sembol ile.
+- 3 Tip Varyans vardır genericlerde.
+  1. Covariance: Stack[A+], şeklinde gösterilir. Tip olarak belirlenen sınıfın alt sınıfları ile 2 yönlü ilişkisi olur yani iç Stack[Person] içine Stack[Student]' ta ekliyebiliriz.
+  2. Contravariance: Stack[-A] şeklinde gösterilir. Tek yönlü ilişki vardır alt sınıf, süper sınıf tipinde genericlere girebilir ancak tersi olamaz.
+  3. Invariance: Stack[A] şeklinde gösterilir. Sadece belirtilen sınıf ve ya primitif neyse o kullanılabilir alt sınıf süper sınıflar dahil olamaz!
+
+## Pattern Matching
+
+- Diğer dillerdeki switch, işlemini ve daha fazlasını yapabilen bir yapı.
+- Switchlerden farkı, matchler birer expressiondır, switchler statementtır.
+- Sadece bir case çalışır bu yüzden breaklere ihtiyaç yoktur.
+- Eğer hiçbir case ile match olmazsa MatchException fırlatır.
+
 ## Namespaces
 
 - 2 adet namespace bulunmaktadır scalada.
