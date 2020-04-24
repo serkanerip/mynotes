@@ -53,7 +53,7 @@
 - **tedious:** sıkıcı, meşakatli (boring)
   - Learning a new computer program can be a tedious process.
 - **divorced: ayrılmış, boşanmış**
-- **stakeholder: ilgili kimse, menfaat sahibi**
+- ## **stakeholder:** ilgili kimse, menfaat sahibi (A person such as an employee, customer)
 - **proportional: orantılı, oranlı**
 - **attitude:** tavır, tutum, düşünce (Feeling or opinion about something or someone)
   - It's often very difficult to change people's attitude.
@@ -65,18 +65,19 @@
 - **notion: düşünce, görüş**
 - **fabulous: efsanevi, olağanüstü**
 - **appreciate: değerini arttırmak, takdir etmek**
-- **charm: albeni, cazibe**
-- **urge: dürtü, dürtmek**
-- **accessor: erişimci**
-- **derive: türetmek, çıkarmak**
+- **charm:** albeni, cazibe
+- **urge:** dürtü, dürtmek
+- **accessor:** erişimci
+- **derive:** türetmek, çıkarmak (To get something from something else)
   - Abstract classes are base classes from which other classes may be derived
-- **acronym: kısaltma**
-- **entangle: dolaşık, karmaşık**
-- **Glossary: Sözlük**
-- **Loan: Borç, ödünç vermek**
-- **Foreign: Yabancı**
+  - I didn't derive much benefit from school.
+- **acronym:** kısaltma
+- **entangle:** dolaşık, karmaşık
+- **Glossary:** Sözlük
+- **Loan:** Borç, ödünç vermek
+- **Foreign:** Yabancı
   - Functional programing is still foreign to many
-- **consumption: tüketim, kullanım**
+- **consumption:** tüketim, kullanım
 - **mitigate:** Azaltmak, hafifletmek (To make something less harmfull or bad)
   - It's unclear how to mitigate the effects of tourism on the island.
 - **essentially:** Özünde, temelde (relating to most important characteristics)
