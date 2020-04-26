@@ -82,3 +82,7 @@
   - It's unclear how to mitigate the effects of tourism on the island.
 - **essentially:** Özünde, temelde (relating to most important characteristics)
   - What he's saying is essetinaly true.
+- **occasional:** Ara sıra olan, nadiren (not happening or done often or regularly)
+  - He has the occasional cigar after dinner.
+- **indecipherable:** Okunmaz, karışık (unable to be read or understood)
+- **incantation:** Büyü, efsun, sihir
