@@ -53,7 +53,7 @@
 - **tedious:** sıkıcı, meşakatli (boring)
   - Learning a new computer program can be a tedious process.
 - **divorced: ayrılmış, boşanmış**
-- ## **stakeholder:** ilgili kimse, menfaat sahibi (A person such as an employee, customer)
+- **stakeholder:** ilgili kimse, menfaat sahibi (A person such as an employee, customer)
 - **proportional: orantılı, oranlı**
 - **attitude:** tavır, tutum, düşünce (Feeling or opinion about something or someone)
   - It's often very difficult to change people's attitude.
@@ -86,3 +86,5 @@
   - He has the occasional cigar after dinner.
 - **indecipherable:** Okunmaz, karışık (unable to be read or understood)
 - **incantation:** Büyü, efsun, sihir
+- **exclude:** Hariç, dahil etmemek
+- **concise:** Kısa, öz

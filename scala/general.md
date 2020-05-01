@@ -141,6 +141,7 @@ class Rational(n: Int, d: Int) {
 - +,\*,/,- Gibi metodlar yazıp kullanabiliriz sınıflarımızda.
 - Superclass'ta parameterless bir metod varsa bunu türeyen sınıfta val haline getirebiliriz.
 - Bir sınıfın metodunu alt sınıfların override etmemesini istiyorsak metodun başına final keywordünü eklemeliyiz, eğer sınıfdan başka bir sınıf türemesin istiyorsak sınıfın başına final keywordü eklemeliyiz.
+- Sınıflar arasında == işareti kullanınca sınıfın equals metodunu çağırmış oluruz.
 
 ## Abstract Classes
 
@@ -187,6 +188,24 @@ class Rational(n: Int, d: Int) {
 - Switchlerden farkı, matchler birer expressiondır, switchler statementtır.
 - Sadece bir case çalışır bu yüzden breaklere ihtiyaç yoktur.
 - Eğer hiçbir case ile match olmazsa MatchException fırlatır.
+- Bir pattern if expressionu ile kombine edilebilir ve buna Guard denir.
+- Tip kontrolü ile bir iş yapıyorsak isIstanceOf, asInstanceOf yerine tercih edilebilir.
+- Patternlar yukarıdan aşağı doğru execute edilir.
+- Matchler, runtime esnasında işlenir ve generic tipler jvmde silinirler bu yüzden örneğin spesifik bir Map tipi için eşleşme kontrolü yapamayız.
+
+```scala
+val myMap: Map[Int, String] =
+      Map(1 -> "one", 2 -> "two")
+
+    val matchedTypeInString = (x: Any) =>
+      x match {
+        case x: Map[Int, Int]    => "Int, Int"
+        case x: Map[Int, String] => "Int, String"
+        case _                   => "Any"
+      }
+
+    println(matchedTypeInString(myMap)) // Int, Int
+```
 
 ## Namespaces
 
@@ -240,6 +259,10 @@ val arr = Array("What's", "up", "doc?");
 echo(arr) // Hata verir cünkü bizden istenen array degil en az bir String nesnesi
 echo(arr: _*) // _* Sembolü ile bu arrayi spread edebiliriz. JS deki ...arr gibi
 ```
+
+## Collections
+
+- List'lerde head listenin ilk elemanını tail ise geriye kalan elemanları işaret eder.
 
 ## Imperative To Functional
 
