@@ -191,7 +191,7 @@ class Rational(n: Int, d: Int) {
 - Bir pattern if expressionu ile kombine edilebilir ve buna Guard denir.
 - Tip kontrolü ile bir iş yapıyorsak isIstanceOf, asInstanceOf yerine tercih edilebilir.
 - Patternlar yukarıdan aşağı doğru execute edilir.
-- Matchler, runtime esnasında işlenir ve generic tipler jvmde silinirler bu yüzden örneğin spesifik bir Map tipi için eşleşme kontrolü yapamayız.
+- Matchler, runtime esnasında işlenir ve generic tipler jvmde silinirler bu yüzden örneğin spesifik bir Map tipi için eşleşme kontrolü yapmaya çalışırsak beklenmeyen çıktılar ve hatalarla karşılaşma ihtimaliniz yüksek.
 
 ```scala
 val myMap: Map[Int, String] =
@@ -263,6 +263,46 @@ echo(arr: _*) // _* Sembolü ile bu arrayi spread edebiliriz. JS deki ...arr gib
 ## Collections
 
 - List'lerde head listenin ilk elemanını tail ise geriye kalan elemanları işaret eder.
+
+## Futures
+
+- Future, içinde yazılan kod bloğunun asenkron olarak başka bir Thread üzerinde çalışmasını sağlar.
+- Futurelar, genellikle değer dönderirler.
+- Bir future'ın bitmesini bekleyebiliriz yani bloklayabiliriz ana ipliği ama bunu Future kullanmadanda yapabiliriz.
+- Callback, metodları kullanabiliriz.
+- Future sonunda Success ve ya Failure nesneleri geri dönderir duruma göre.
+- Await ile belirli bir süre ana ipliği bekletebiliriz, eğer bu süre içinde iş bloğu tamamlanmaz ise TimeOutException fırlatır.
+- Await.result eğer bir hata fırlatılırsa future kod bloğu içinde tekrar fırlatır bu yüzden bunuda try catchlemek zorunda kalırsınız bunun yerine Await.ready kullanabiliriz.
+- Future'a eşitlenen değişkenin değeri işlem bitince şöyle bir iç içe yapıya girer:
+  - Future -> Success Ve Ya Failure -> Some Or None
+- Future sonucunu pattern matching ile kullanabiliriz.
+- Bir Future'ın, bir diğerinden sonra başlamasını istiyorsak def ile tanımlayıp birinci future'ın tamamlandığı zaman çalışacak olan kod bloğunun içinde çağırırız.
+
+#### Future içindeki degere erişme
+
+```scala
+val myAge = Future {Thread.sleep(1000); 1}
+myAge.onComplete(t => {
+  println(t.value.)
+})
+```
+
+#### Future Ex
+
+```scala
+    val num1 = Future { Thread.sleep(1000); 1 }
+    val num2 = Future { Thread.sleep(5000); 5 }
+
+    val withFlatMapFunc = num1.flatMap(n1 => num2.map(n2 => n1 + n2))
+    val withMapFunc = num1.map(n1 => num2.map(n2 => n1 + n2))
+    val withForExpr = for (n1 <- num1; n2 <- num2) yield n1 + n2;
+
+    while (!withFlatMapFunc.isCompleted) {}
+
+    println(withFlatMapFunc) // Future(Success(6))
+    println(withForExpr) // Future(Success(6))
+    println(withMapFunc) // Future(Success(Future(Success(6))))
+```
 
 ## Imperative To Functional
 
@@ -344,3 +384,8 @@ def beside(that: Element): Element = {
 # Resources
 
 1. https://www.artima.com/pins1ed/
+2. http://alvinalexander.com/downloads/scala/Scala-Cheat-Sheet-devdaily.pdf
+3. http://twitter.github.io/effectivescala/#Introduction
+4. https://danielwestheide.com/blog/the-neophytes-guide-to-scala-part-1-extractors/
+5. https://apiumhub.com/tech-blog-barcelona/scala-type-bounds/
+6. http://twitter.github.io/scala_school/
