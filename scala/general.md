@@ -278,7 +278,7 @@ def reduceLeft[A](list: Seq[A], f: (A, A) => A): A = {
       }
     }
 
-    if (list.isEmpty) throw new InvalidParameterException("fuck")
+    if (list.isEmpty) throw new InvalidParameterException("ups")
 
     loop(list, f);
   }
@@ -293,7 +293,7 @@ def reduceLeft[A](list: Seq[A], f: (A, A) => A): A = {
       }
     }
 
-    if (list.isEmpty) throw new InvalidParameterException("fuck")
+    if (list.isEmpty) throw new InvalidParameterException("ups")
 
     loop(list, f);
   }
