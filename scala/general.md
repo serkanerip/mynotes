@@ -135,7 +135,6 @@ class Rational(n: Int, d: Int) {
 - Scalada sınıfların gövdesi constructor fonksiyonudur diyebiliriz.
 - Constructor parametreleri yukarıda gösterildiği gibi yazılır.
 - require metodu constructor parametrelerimizi kontrol edip bunların doğruluğunu check etmemizi sağlar eğer false olursa içindeki expression exception fırlatır.
-- Sınıf parametrelerine, sınıfın metodları içinden erişemeyiz. Bunları bir field'a assign etmeliyiz.
 - def this şeklinde başka constructorlar oluşturabiliriz ancak bu constructorlar primary constructorı çağırmalıdır.
 - Superclass constructorlarını sadece primary constructor çağırabilir.
 - +,\*,/,- Gibi metodlar yazıp kullanabiliriz sınıflarımızda.
@@ -222,7 +221,7 @@ val myMap: Map[Int, String] =
 ## Functions
 
 - Scalada first-class fonksiyonlar vardır.
-- Fonksiyonları değişkenlere atıyabiliriz, parametra olarak verebiliriz ve return edebiliriz.
+- Fonksiyonları değişkenlere atıyabiliriz, parametre olarak verebiliriz ve return edebiliriz.
 - Fonksiyon içinde fonksiyon yazabiliriz.
 - Closurelar scalada da vardır.
 
@@ -238,6 +237,10 @@ val myMap: Map[Int, String] =
 - İlk placeholder ilk parametre, ikincisi ikinci parametre ....
 - İlk parametreyi 2 defa kullanayım şeklide bir kullanım yapamazsınız.
 
+## Try And Options
+
+- Try ve, optionlarda foreach ile bir sideeffect yapılacaksa None ve Failure olanlar elimine edilir.
+
 **Örnekler:**
 
 ```scala
@@ -245,7 +248,7 @@ val r = 0 to 100;
 var sum = 0;
 
 r.map(_*_); // EQ= r.map(x => x * x)
-r.reduce(_*_) // EQ= r.filter((x,y) => x * y)
+r.filter(_*_) // EQ= r.filter((x,y) => x * y)
 r.reduce((x, y) => x + y / x min y); // Bunu placeholder ile yapamayız.
 val f = (_: Int) + (_: Int) // EQ= val f = (x, y) => x + y;
 r.foreach(sum += _)
@@ -263,6 +266,46 @@ echo(arr: _*) // _* Sembolü ile bu arrayi spread edebiliriz. JS deki ...arr gib
 ## Collections
 
 - List'lerde head listenin ilk elemanını tail ise geriye kalan elemanları işaret eder.
+
+## Reduce, Fold Custom Implementation
+
+```scala
+def reduceLeft[A](list: Seq[A], f: (A, A) => A): A = {
+    def loop(l: Seq[A], f: (A, A) => A): A = {
+      l match {
+        case x: Seq[A] if x.size == 1 => x(0)
+        case x: Seq[A]                => loop(f(x(0), x(1)) +: x.drop(2), f)
+      }
+    }
+
+    if (list.isEmpty) throw new InvalidParameterException("fuck")
+
+    loop(list, f);
+  }
+
+  def reduceRight[A](list: List[A], f: (A, A) => A): A = {
+    def loop(l: List[A], f: (A, A) => A): A = {
+      println(l)
+      l match {
+        case x: List[A] if x.size == 1 => x(0)
+        case x: List[A] =>
+          loop(x.dropRight(2) :+ f(x(x.size - 2), x(x.size - 1)), f)
+      }
+    }
+
+    if (list.isEmpty) throw new InvalidParameterException("fuck")
+
+    loop(list, f);
+  }
+
+  def foldLeft[A](acc: A)(list: Seq[A], f: (A, A) => A): A = {
+    reduceLeft(acc +: list, f);
+  }
+
+  def foldRight[A](acc: A)(list: Seq[A], f: (A, A) => A): A = {
+    reduceLeft(list :+ acc, f);
+  }
+```
 
 ## Futures
 
