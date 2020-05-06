@@ -267,46 +267,6 @@ echo(arr: _*) // _* Sembolü ile bu arrayi spread edebiliriz. JS deki ...arr gib
 
 - List'lerde head listenin ilk elemanını tail ise geriye kalan elemanları işaret eder.
 
-## Reduce, Fold Custom Implementation
-
-```scala
-def reduceLeft[A](list: Seq[A], f: (A, A) => A): A = {
-    def loop(l: Seq[A], f: (A, A) => A): A = {
-      l match {
-        case x: Seq[A] if x.size == 1 => x(0)
-        case x: Seq[A]                => loop(f(x(0), x(1)) +: x.drop(2), f)
-      }
-    }
-
-    if (list.isEmpty) throw new InvalidParameterException("ups")
-
-    loop(list, f);
-  }
-
-  def reduceRight[A](list: List[A], f: (A, A) => A): A = {
-    def loop(l: List[A], f: (A, A) => A): A = {
-      println(l)
-      l match {
-        case x: List[A] if x.size == 1 => x(0)
-        case x: List[A] =>
-          loop(x.dropRight(2) :+ f(x(x.size - 2), x(x.size - 1)), f)
-      }
-    }
-
-    if (list.isEmpty) throw new InvalidParameterException("ups")
-
-    loop(list, f);
-  }
-
-  def foldLeft[A](acc: A)(list: Seq[A], f: (A, A) => A): A = {
-    reduceLeft(acc +: list, f);
-  }
-
-  def foldRight[A](acc: A)(list: Seq[A], f: (A, A) => A): A = {
-    reduceLeft(list :+ acc, f);
-  }
-```
-
 ## Futures
 
 - Future, içinde yazılan kod bloğunun asenkron olarak başka bir Thread üzerinde çalışmasını sağlar.
@@ -345,6 +305,46 @@ myAge.onComplete(t => {
     println(withFlatMapFunc) // Future(Success(6))
     println(withForExpr) // Future(Success(6))
     println(withMapFunc) // Future(Success(Future(Success(6))))
+```
+
+## Reduce, Fold Custom Implementation
+
+```scala
+def reduceLeft[A](list: Seq[A], f: (A, A) => A): A = {
+    def loop(l: Seq[A], f: (A, A) => A): A = {
+      l match {
+        case x: Seq[A] if x.size == 1 => x(0)
+        case x: Seq[A]                => loop(f(x(0), x(1)) +: x.drop(2), f)
+      }
+    }
+
+    if (list.isEmpty) throw new InvalidParameterException("ups")
+
+    loop(list, f);
+  }
+
+  def reduceRight[A](list: List[A], f: (A, A) => A): A = {
+    def loop(l: List[A], f: (A, A) => A): A = {
+      println(l)
+      l match {
+        case x: List[A] if x.size == 1 => x(0)
+        case x: List[A] =>
+          loop(x.dropRight(2) :+ f(x(x.size - 2), x(x.size - 1)), f)
+      }
+    }
+
+    if (list.isEmpty) throw new InvalidParameterException("ups")
+
+    loop(list, f);
+  }
+
+  def foldLeft[A](acc: A)(list: Seq[A], f: (A, A) => A): A = {
+    reduceLeft(acc +: list, f);
+  }
+
+  def foldRight[A](acc: A)(list: Seq[A], f: (A, A) => A): A = {
+    reduceLeft(list :+ acc, f);
+  }
 ```
 
 ## Imperative To Functional
