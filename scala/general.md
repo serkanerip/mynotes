@@ -323,12 +323,11 @@ def reduceLeft[A](list: Seq[A], f: (A, A) => A): A = {
     loop(list, f);
   }
 
-  def reduceRight[A](list: List[A], f: (A, A) => A): A = {
-    def loop(l: List[A], f: (A, A) => A): A = {
-      println(l)
+  def reduceRight[A](list: Seq[A], f: (A, A) => A): A = {
+    def loop(l: Seq[A], f: (A, A) => A): A = {
       l match {
-        case x: List[A] if x.size == 1 => x(0)
-        case x: List[A] =>
+        case x: Seq[A] if x.size == 1 => x(0)
+        case x: Seq[A] =>
           loop(x.dropRight(2) :+ f(x(x.size - 2), x(x.size - 1)), f)
       }
     }
