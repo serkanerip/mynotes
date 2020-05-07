@@ -263,11 +263,27 @@ echo(arr) // Hata verir cünkü bizden istenen array degil en az bir String nesn
 echo(arr: _*) // _* Sembolü ile bu arrayi spread edebiliriz. JS deki ...arr gibi
 ```
 
+## Partial Functions
+
+- PF'ler sadece belirli giriş değerleri için çalışan fonksiyonlardır.
+- Pattern mathcing ile çalışırlar.
+- PF'ler, fonksiyon tipi argümanlara girebilirler. Çünkü fonksiyonların bir alt tipine girerler.
+
 ## Collections
 
-- List'lerde head listenin ilk elemanını tail ise geriye kalan elemanları işaret eder.
+- Seq'lerde head ilk elemanı dönderir, tail ise ilk eleman haricindeki elemanları dönderir.
 
 ![](https://www.scala-lang.org/docu/files/collections-api/collections.immutable.png)
+
+## Syntax Sugar
+
+```scala
+
+// (->) bir metoddur. Tuple dönderir.
+Map(1 -> "one") // Map[Int,String] = Map(1 -> one)
+Map(1.->("one")) // Map[Int,String] = Map(1 -> one)
+
+```
 
 ## Futures
 
@@ -433,3 +449,4 @@ def beside(that: Element): Element = {
 4. https://danielwestheide.com/blog/the-neophytes-guide-to-scala-part-1-extractors/
 5. https://apiumhub.com/tech-blog-barcelona/scala-type-bounds/
 6. http://twitter.github.io/scala_school/
+7. https://docs.scala-lang.org/style/overview.html
