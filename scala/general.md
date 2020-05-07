@@ -285,6 +285,39 @@ Map(1.->("one")) // Map[Int,String] = Map(1 -> one)
 
 ```
 
+## Access Modifiers
+
+1. Private, bir değişken ve ya alanın sadece sınıf ve ya nesne içinden erişilebilmesine izin verir.
+2. Protected, ile alanları erişimini sadece alt sınıflara açar.
+3. Default, herhangi bir kısıtlama olmadan alan ve metodların erişimini açar. **Diğer dillerdeki public erişim belirtecine denk gelir.**
+
+- Scalada erişim belirteçlerine scope tanımlayabiliyoruz.
+
+```scala
+package outside {
+  package inside {
+    object Messages {
+      // inside package'ı bu değişkenere erişebilir.
+      private[inside] val Insiders = "Hello Friends"
+      // outside package'ı bu değişkenere erişebilir.
+      private[outside] val Outsiders = "Hello People"
+    }
+    object InsideGreeter {
+      def sayHello(): Unit =
+        // 2 alanada erişebilir
+        println(Messages.Insiders + " and " + Messages.Outsiders)
+    }
+  }
+  object OutsideGreeter {
+    def sayHello(): Unit =
+      // Sadece Outsiders alanına erişebilir.
+      println(inside.Messages.Outsiders)
+  }
+}
+```
+
+- **private[this]**: Aynı sınıftan oluşturulan nesneler birbirlerinin private değişken ve ya alanlarına metodları ile erişebilirler. Bunu engellemek için private[this] yani sadece oluşan nesne erişebilir diye belirtmemiz lazım.
+
 ## Futures
 
 - Future, içinde yazılan kod bloğunun asenkron olarak başka bir Thread üzerinde çalışmasını sağlar.
@@ -450,3 +483,4 @@ def beside(that: Element): Element = {
 5. https://apiumhub.com/tech-blog-barcelona/scala-type-bounds/
 6. http://twitter.github.io/scala_school/
 7. https://docs.scala-lang.org/style/overview.html
+8. https://www.youtube.com/channel/UCSBUwLT9zXhUalKfJrc2q2A
