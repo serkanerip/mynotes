@@ -267,7 +267,8 @@ echo(arr: _*) // _* Sembolü ile bu arrayi spread edebiliriz. JS deki ...arr gib
 
 - PF'ler sadece belirli giriş değerleri için çalışan fonksiyonlardır.
 - Pattern mathcing ile çalışırlar.
-- PF'ler, fonksiyon tipi argümanlara girebilirler. Çünkü fonksiyonların bir alt tipine girerler.
+- PF'ler, fonksiyon tipi parametrelere girebilirler. Çünkü fonksiyonların bir alt tipine girerler.Ancak eğer case ile match olmazsa MatchError fırlatır.
+- Type Alias For PM `type ~>[-Input, +Output] = PartialFunction[Input, Output]`
 
 ## Collections
 
@@ -288,7 +289,7 @@ Map(1.->("one")) // Map[Int,String] = Map(1 -> one)
 ## Access Modifiers
 
 1. Private, bir değişken ve ya alanın sadece sınıf ve ya nesne içinden erişilebilmesine izin verir.
-2. Protected, ile alanları erişimini sadece alt sınıflara açar.
+2. Protected, ile alanların erişimini sadece alt sınıflara açar.
 3. Default, herhangi bir kısıtlama olmadan alan ve metodların erişimini açar. **Diğer dillerdeki public erişim belirtecine denk gelir.**
 
 - Scalada erişim belirteçlerine scope tanımlayabiliyoruz.
