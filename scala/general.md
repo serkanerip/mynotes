@@ -267,6 +267,8 @@ echo(arr: _*) // _* Sembolü ile bu arrayi spread edebiliriz. JS deki ...arr gib
 
 - List'lerde head listenin ilk elemanını tail ise geriye kalan elemanları işaret eder.
 
+![](https://www.scala-lang.org/docu/files/collections-api/collections.immutable.png)
+
 ## Futures
 
 - Future, içinde yazılan kod bloğunun asenkron olarak başka bir Thread üzerinde çalışmasını sağlar.
