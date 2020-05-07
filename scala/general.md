@@ -268,7 +268,7 @@ echo(arr: _*) // _* Sembolü ile bu arrayi spread edebiliriz. JS deki ...arr gib
 - PF'ler sadece belirli giriş değerleri için çalışan fonksiyonlardır.
 - Pattern mathcing ile çalışırlar.
 - PF'ler, fonksiyon tipi parametrelere girebilirler. Çünkü fonksiyonların bir alt tipine girerler.Ancak eğer case ile match olmazsa MatchError fırlatır.
-- Type Alias For PM `type ~>[-Input, +Output] = PartialFunction[Input, Output]`
+- Type Alias For PF `type ~>[-Input, +Output] = PartialFunction[Input, Output]`
 
 ## Collections
 
