@@ -159,12 +159,12 @@ Bir predicate fonksiyonu yazdık bu fonksiyon bir int ve bir String alıyor. Ç�
 
 ```scala
 test("count") {
-    val list = Iterable(1, 3, 5, 7, 9, 11, 15);
+    val oddsBetweenOneToThirteen = Iterable(1, 3, 5, 7, 9, 11, 13);
 
     val numaraOndanBuyukMuTestEt: Int => Boolean =
       num => num > 10;
 
-    assert(list.count(numaraOndanBuyukMuTestEt) == 2)
+    assert(oddsBetweenOneToThirteen.count(numaraOndanBuyukMuTestEt) == 2)
 }
 ```
 
@@ -172,8 +172,8 @@ test("count") {
 
 ```scala
 test("drop") {
-    val list = Iterable(1, 2, 3)
-    assert(list.drop(1) == List(2, 3))
+    val oneToThree = Iterable(1, 2, 3)
+    assert(oneToThree.drop(1) == List(2, 3))
 }
 ```
 
@@ -181,8 +181,8 @@ test("drop") {
 
 ```scala
 test("dropRight") {
-    val list = Iterable(1, 2, 3)
-    assert(list.dropRight(1) == List(1, 2))
+    val oneToThree = Iterable(1, 2, 3)
+    assert(oneToThree.dropRight(1) == List(1, 2))
 }
 ```
 
@@ -190,11 +190,11 @@ test("dropRight") {
 
 ```scala
 test("dropWhile") {
-    val list = Iterable(1, 3, 5, 7, 0, 2, 4, 9)
+    val randomNumbers = Iterable(1, 3, 5, 7, 0, 2, 4, 9)
         val ciftSayiBulanaKadarDusur: Int => Boolean =
             x => x % 2 != 0
         assert {
-            list.dropWhile(ciftSayiBulanaKadarDusur) == List(0, 2, 4, 9)
+            randomNumbers.dropWhile(ciftSayiBulanaKadarDusur) == List(0, 2, 4, 9)
         }
     }
 ```
@@ -203,8 +203,8 @@ test("dropWhile") {
 
 ```scala
 test("empty") {
-    val list = Iterable(1, 3, 5, 7, 0, 2, 4, 9)
+    val randomNumbers = Iterable(1, 3, 5, 7, 0, 2, 4, 9)
 
-    assert(list.empty === List())
+    assert(randomNumbers.empty === List())
   }
 ```
