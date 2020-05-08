@@ -154,3 +154,57 @@ test("copyToArray") {
 Burada `kelimeleUzunluklari` koleksiyonumuzda kelime uzunlukları girdik diğer koleksiyona ise stringler girdik.
 
 Bir predicate fonksiyonu yazdık bu fonksiyon bir int ve bir String alıyor. Çünkü ilk listemiz int tipinde, diğeri string tipinde. Daha sonra corresponds ile dönüş değerini aldığımızda true olarak dönüyor çünkü kelime uzunluklarını ilk listeye uygun bir şekilde yaptım.
+
+**count**: Array elemanları üzerinde bir test fonksiyonu çalıştırır ve kaç tanesinin true olduğunu dönderir.
+
+```scala
+test("count") {
+    val list = Iterable(1, 3, 5, 7, 9, 11, 15);
+
+    val numaraOndanBuyukMuTestEt: Int => Boolean =
+      num => num > 10;
+
+    assert(list.count(numaraOndanBuyukMuTestEt) == 2)
+}
+```
+
+**drop**: Parametre olarak bir integer alır buna n diyelim, listedenin başındaki n tane eleman hariç diğer tümünü geri dönderir.
+
+```scala
+test("drop") {
+    val list = Iterable(1, 2, 3)
+    assert(list.drop(1) == List(2, 3))
+}
+```
+
+**dropRight**: Parametre olarak bir integer alır buna n diyelim, listedenin sonundaki n tane eleman hariç diğer tümünü geri dönderir.
+
+```scala
+test("dropRight") {
+    val list = Iterable(1, 2, 3)
+    assert(list.dropRight(1) == List(1, 2))
+}
+```
+
+**dropWhile**: Parametre olarak bir test fonksiyonu alır ve bu fonksiyon **ilk defa false alana kadar**, true dönen elemanları atıp geriye kalanların listesini dönderir.
+
+```scala
+test("dropWhile") {
+    val list = Iterable(1, 3, 5, 7, 0, 2, 4, 9)
+        val ciftSayiBulanaKadarDusur: Int => Boolean =
+            x => x % 2 != 0
+        assert {
+            list.dropWhile(ciftSayiBulanaKadarDusur) == List(0, 2, 4, 9)
+        }
+    }
+```
+
+**empty**: Aynı iterable koleksiyonun boş olanını dönderir.
+
+```scala
+test("empty") {
+    val list = Iterable(1, 3, 5, 7, 0, 2, 4, 9)
+
+    assert(list.empty === List())
+  }
+```
