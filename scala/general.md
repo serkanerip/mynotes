@@ -3,21 +3,23 @@
 ## Val, Def, Lazy Val
 
 - Val, değişmeyen bir değer oluşturur.
+- Var, mutable bir değişken oluşturur.
+- Def, bir metod oluşturur. İçerisindeki kod bloğu yanlızsa çağırıldığı zaman çalışır.
+- Lazy val, def ve val arasında bir yerdedir. İlk çağırıma kadar değer hesaplanmaz yani def gibi davranır ancak daha sonraki çağırımlarda değeri neyse onu verir init eden kodu tekrar çalıştırmaz yani val gibi davranır.
 
 ```scala
-val myNum = {
-    println("hi");
-    1337
-}
+val immutableInt = 5
+val mutableInt = 5
+def squareMethod(x:Int): Int => x * x
+val squareFunction: Int => Int = num => num * num
+lazy val wow = squareFunction(6)
 ```
-
-- Burada myNum değişkeninini kullanmasakta println satırı çalışır ve 1337 değeri atanır myNum'a.
-- Def ile belirlenen değişkenlerin bloğu çağırıldığı zaman çalışır.
-- Lazy val, def ile val arasında bir tiptir. İlk çağırıldığında def gibi çalışır ancak sonraki çağırımlarında val gibi davranır.
 
 ## Types
 
 - Bir değişkenin tipi yapabileceklerini belirler.
+- Metod, fonksiyon parametrelerinin tipleri belirtilmek zorundadır.
+- Scala, local olarak type inference yapabilir.
 - Any tipini olabildiğince kullanmamak lazım. Neden ?
 
 ```scala
@@ -29,38 +31,17 @@ println(myNumberWithAnyType / 2); // COMPILER ERROR!!!
 
 ## Array
 
-#### Array Oluşturma
-
-```scala
-val nums = Array(1, 2, 3);
-
-val numsV2 = Array.apply(1, 2, 3);
-```
-
-#### Array Elemanları Üzerinde İşlemler
-
-```scala
-myArray(0); // arrayin sıfırıncı elemanı döner.
-```
-
 - Scalada array indislerine parantezle erişilir süslü ile değil.
 - Bu aslında arraylere özgü bir şey değildir. Scalada arraylerde birer sınıftır aslında bir sınıftan türeyen nesneyi parantezlerle çağırınca aslında bir fonksiyon çağırmış oluyoruz.
 - myArray(0) === myArray.apply(0) anlamına geliyor.
 - myArray(0) = "Selam" ise myArray.update(0, "Selam") haline geliyor.
 - Bu sadece arraylere özgü değildir. Eğer sizinde oluşturduğunuz bir sınıfta apply metodu varsa sizde bunu kullanabilirsiniz.
--
+
+#### Array Oluşturma
 
 ```scala
-
-object Main {
-  def main(args: Array[String]): Unit = {
-    println(t(1)); // RETURNS 1
-  }
-}
-
-class Test {
-  def apply(i: Int):Int = i;
-}
+val nums = Array(1, 2, 3); // == Array.apply(1, 2, 3);
+println(nums(0)) // RETURNS 1
 ```
 
 ## List
@@ -111,8 +92,8 @@ for(i < 0 to 2)
     println(i)
 ```
 
-- Burada 0 to 2 aslında şudur -> (0).to(2);
-- Int nesnesinin to adında bir metodu var.Yani scalada tek parametreli fonksiyonların argümanlarını parantez içinde yazmadanda kullanabiliyoruz.
+- Burada 0 to 2 aslında şudur: (0).to(2);
+- Int nesnesinin to adında bir metodu var.Yani scalada tek parametreli fonksiyonların argümanlarını parantez içinde yazmadan da kullanabiliyoruz.
 
 ## Operators
 
@@ -272,9 +253,7 @@ echo(arr: _*) // _* Sembolü ile bu arrayi spread edebiliriz. JS deki ...arr gib
 
 ## Collections
 
-- Seq'lerde head ilk elemanı dönderir, tail ise ilk eleman haricindeki elemanları dönderir.
-
-![](https://www.scala-lang.org/docu/files/collections-api/collections.immutable.png)
+[Koleksiyonlar burada anlatılmaktadır.](collection.md)
 
 ## Syntax Sugar
 
