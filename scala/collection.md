@@ -31,11 +31,11 @@ Sadece bir soyut metodu bulunur bu da **iterator** metodudur. Foreach, metodu bu
 
 #### Somut Metodlar
 
-**++:**: Concat metodu için bir kısaltmadır diğer dillerdeki operatör gibi düşünülebilir.
+**++**: Concat metodu için bir kısaltmadır diğer dillerdeki operatör gibi düşünülebilir.
 
-Sol operandın elemanlarına sağ operandın elemanlarını ekler ve yeni bir iterable koleksiyonu dönderir.
+Sol operandın elemanlarına sağ operandın elemanlarını ekler ve yeni bir iterable koleksiyon dönderir.
 
-Her iki operandda Iterable sınıfını kalıtmalıdırlar.
+Her iki operandda Iterable sınıfını kalıtmalıdır.
 
 ```scala
 test("++") {
@@ -110,6 +110,47 @@ Burada anonymous bir partial function verdik parametre olarak tipi User => Strin
 }
 ```
 
-```scala
+**copyToArray**: Bir iterable koleksiyonun elemanlarını bir Array'e kopyalamak için kullanılır.
 
+1. Bir Parametreli: Koleksiyondaki tüm elemanları array'e kopyalar.
+2. İki Parametreli: Ek olarak array'in hangi indisinden başlanılacağını belirtebilirsiniz.
+3. Üç Parametreli: İki parametreliye ek olarak, kaç adet elemanı kopyalamak istediğinizi belirtirsiniz.
+
+```scala
+test("copyToArray") {
+    val list = Iterable(1, 2, 3, 4, 5, 6);
+    val exArr: Array[Int] = Array.fill(6) { 0 }; // 6 adet 0'a sahip bir array olusturur.
+
+    // tek parametre
+    list.copyToArray(exArr)
+    assert(exArr.toList === list)
+    // iki parametre
+    list.copyToArray(exArr, start = 3)
+    assert(exArr.toList === List(1, 2, 3, 1, 2, 3))
+    // üç parametre
+    list.copyToArray(xs = exArr, start = 0, len = 6)
+    assert(exArr.toList === list)
+}
 ```
+
+**corresponds**: İki liste elanlarını ikili şekilde sırayla, boolean dönderen bir predicate fonksiyona koyar ve eğer tüm hepsi true dönerse sonuç true olur.
+
+**Eğer her iki listenin uzunluğu eşit değilse false döner.**
+
+```scala
+  test("corresponds") {
+    val kelimeUzunluklari = Iterable(1, 3, 5, 7, 9);
+    val kelimeler = Iterable("a", "aaa", "a" * 5, "a" * 7, "a" * 9);
+
+    val predicate = (x: Int, y: String) => y.length == x;
+
+    val result: Boolean =
+      kelimeUzunluklari.corresponds(kelimeler)(predicate)
+
+    assert(result)
+}
+```
+
+Burada `kelimeleUzunluklari` koleksiyonumuzda kelime uzunlukları girdik diğer koleksiyona ise stringler girdik.
+
+Bir predicate fonksiyonu yazdık bu fonksiyon bir int ve bir String alıyor. Çünkü ilk listemiz int tipinde, diğeri string tipinde. Daha sonra corresponds ile dönüş değerini aldığımızda true olarak dönüyor çünkü kelime uzunluklarını ilk listeye uygun bir şekilde yaptım.
