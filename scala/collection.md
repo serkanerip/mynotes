@@ -328,3 +328,23 @@ Peki hangi Map'i tercih etmeliyim ?
 3. Eklenme sırasının tersine göre sıralanmasını istiyorsanız **ListMap** kullanmak işinizi görür. Çünkü elemanları başa ekler.
 
 Burada sadece 3 farklı implementasyondan bahsettim ancak daha bir çok çeşidi mevcuttur. Concurrent işlemlerde kullanmak için de ayrı implementasyonlar mevcut.
+
+### Seq (Sequence)
+
+Sıralı elemanları bulunduran koleksiyon tipidir. Bir çok alt sınıfa sahiptir.İki alt traite sahiptir bunlar LinearSeq ve IndexedSeq'tir bunlar yeni metodlar eklemezler fakat farklı performans karakteristikleri vardır. Eğer hangisini kullanacağınızın bir önemi yok ise direk Seq tipinde oluşturabilirsiniz.
+
+#### IndexedSeq
+
+İndis tabanlı erişimlerin ve güncellemelerin çok olduğu yerde performanslı çalışır.
+
+Range, String, Vector ...
+
+#### LinearSeq
+
+İndis tabanlı erişimlerde ve güncellemelerde yavaştır çünkü Linked List benzeri bir veri yapısına sahiptir. Tail, head ve isEmpty metodlarında performanslılardır.
+
+List, Queue, Stack, Stream ...
+
+# Kaynaklar
+
+1. https://www.lihaoyi.com/post/BenchmarkingScalaCollections.html

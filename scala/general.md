@@ -464,3 +464,4 @@ def beside(that: Element): Element = {
 6. http://twitter.github.io/scala_school/
 7. https://docs.scala-lang.org/style/overview.html
 8. https://www.youtube.com/channel/UCSBUwLT9zXhUalKfJrc2q2A
+9. https://www.lihaoyi.com/post
