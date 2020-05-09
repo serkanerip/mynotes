@@ -206,5 +206,95 @@ test("empty") {
     val randomNumbers = Iterable(1, 3, 5, 7, 0, 2, 4, 9)
 
     assert(randomNumbers.empty === List())
+}
+```
+
+**exists**: Koleksiyonda, test fonksiyonumuzu true dönderen eleman var mı kontrolünü yapar.
+
+```scala
+test("exists") {
+    val randomChars = Iterable('a', 'b', 'e', 'f', 'G')
+    val listedeBuyukHarfVarMi: Char => Boolean = ch => ch.isUpper;
+
+    assert(randomChars.exists(listedeBuyukHarfVarMi))
+}
+```
+
+**filter**: Koleksiyonda, filtreleme yapmamızı sağlar işimize yarıyan elemanları liste olarak alabiliriz.
+
+```scala
+test("filter") {
+  val randomChars = Iterable('a', 'b', 'e', 'f', 'G', 'K')
+  val buyukHarfleriGetir: Char => Boolean = ch => ch.isUpper;
+  assert(randomChars.filter(buyukHarfleriGetir) === Iterabl('G', 'K'))
+}
+```
+
+**filterNot**: Filter, metodunun tersi etki yapar, test fonksiyonumuz sonucunda eşleşmeyen elemanları dönderir.
+
+```scala
+test("filterNot") {
+  val randomChars = Iterable('a', 'b', 'e', 'f', 'G', 'K')
+  val kucukHarfleriGetir: Char => Boolean = ch => ch.isUpper == false;
+  assert(randomChars.filterNot(kucukHarfleriGetir) === Iterabl('G', 'K'))
+}
+```
+
+**map**: Bir koleksiyon elemanları üzerinde işlem yaparak yeni bir koleksiyon elde etmek istediğimizde kullanırız.
+
+Aşağıda ki örnekte kelimelerin bulunduğu koleksiyondan kelimelerin uzunlunlarının bulunduğu bir koleksiyon elde ettik.
+
+```scala
+test("map") {
+  val randomWords = Iterable("foo", "ok", "test")
+  val kelimeninUzunlugunuAl: String => Int =
+    word => word.length
+  val kelimelerinUzunluklari = randomWords.ma(kelimeninUzunlugunuAl)
+  assert(kelimelerinUzunluklari === Iterable(3, 2, 4))
+}
+```
+
+**flatten**: Bir koleksiyon içinde, koleksiyonlar var ise ve bu iç koleksiyonun elemanlarının hepsini dışarı istediğimiz zaman kullanılır.
+
+İç koleksiyonlar farkı uzunluklarda ve farklı tiplerde olabilirler.
+
+```scala
+  test("flatten") {
+    val notes = Iterable(
+      Map("Ali" -> 15),
+      Map("Veli" -> 85)
+    )
+    val result = notes.flatten
+
+    assert(result === Iterable(("Ali", 15), ("Veli", 85)))
   }
+```
+
+### Map (Dictionary, Associative Array)
+
+Anahtar, değer ilişkileri tutan koleksiyonlara verilen isimdir. Scalada Map'lerin elemanları birer tupledır. Anahtarlar benzersizdir bir anahtara ait iki değer olamaz?. Type Unsafe(Any) kullanmadığınız taktirde anahtarlar için bir tip ve değerler için bir tip belirleyebilirsiniz bunlar aynı da olabilirler.
+
+#### Genel Kullanım
+
+```scala
+  val nameAndAgeMap = Map(
+    "Serkan" -> 21,
+    "Gülçin" -> 33,
+    "Yahya" -> 41
+  )
+
+  println(nameAndAgeMap get "Serkan") // Some(21)
+  println(nameAndAgeMap get "Ali") // None
+  println(nameAndAgeMap getOrElse ("Ali", "yok")) // yok
+  println(nameAndAgeMap contains "Yahya") // true
+  println(nameAndAgeMap isDefinedAt "Ali") // false
+
+  println(nameAndAgeMap.keys) // Set(Serkan, Gülçin, Yahya)
+  println(nameAndAgeMap.values) // Iterable(21, 33, 41)
+  println(nameAndAgeMap + ("Ali" -> 11)) // Ali'li map
+  println(nameAndAgeMap - "Yahya") // Yahya'sız map
+
+  nameAndAgeMap.foreach({
+    case (name, age) => println(s"$name, $age yasinda")
+  }) // Serkan, 21 yasinda, Gülçin 33 yasinda, Yahya 41 yasinda
 ```
