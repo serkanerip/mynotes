@@ -300,3 +300,31 @@ Anahtar, değer ilişkileri tutan koleksiyonlara verilen isimdir. Scalada Map'le
 ```
 
 Maplerin genel metodları yukarıda kullanılanlardır. Gördüğünüz üzere bir anahtarın değerine eriştiğimiz zaman bize Option tipinde döner null safety sağlamak amacıyla. Kullandığımız +, ve - operatörleri bizim mapimizin içeriğini değiştirmez iki mapi toplar ve yeni bir map dönderir.
+
+#### Bazı Mutable İşlemler
+
+```scala
+  val nameAndAgeMap: Map[String, Int] = Map(
+    "Serkan" -> 21,
+    "Gülçin" -> 33,
+    "Yahya" -> 41
+  )
+  nameAndAgeMap += ("Ali" -> 11) // ekleme
+  nameAndAgeMap -= "Yahya" // çıkarma
+  nameAndAgeMap ++= Map("Sedat" -> 44, "Necip" -> 24)
+  println(nameAndAgeMap isDefinedAt "Ali") // true
+  println(nameAndAgeMap isDefinedAt "Yahya") // false
+  println(nameAndAgeMap isDefinedAt "Sedat") // true
+  println(nameAndAgeMap isDefinedAt "Necip") // true
+
+  nameAndAgeMap.update("Ali", 33);
+  assert(nameAndAgeMap.get("Ali") == Some(33))
+```
+
+Peki hangi Map'i tercih etmeliyim ?
+
+1. Anahtarlara göre sıralı bir map istiyorsanız **SortedMap** kullanmak işinize yarar.
+2. Ekleme sırasına göre sıralanmasını istiyorsanız **LinkedHashMap** kullanmak işinizi görür.
+3. Eklenme sırasının tersine göre sıralanmasını istiyorsanız **ListMap** kullanmak işinizi görür. Çünkü elemanları başa ekler.
+
+Burada sadece 3 farklı implementasyondan bahsettim ancak daha bir çok çeşidi mevcuttur. Concurrent işlemlerde kullanmak için de ayrı implementasyonlar mevcut.
