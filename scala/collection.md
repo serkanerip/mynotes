@@ -277,7 +277,7 @@ Anahtar, değer ilişkileri tutan koleksiyonlara verilen isimdir. Scalada Map'le
 #### Genel Kullanım
 
 ```scala
-  val nameAndAgeMap = Map(
+  val nameAndAgeMap: Map[String, Int] = Map(
     "Serkan" -> 21,
     "Gülçin" -> 33,
     "Yahya" -> 41
