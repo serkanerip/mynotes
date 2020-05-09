@@ -298,3 +298,5 @@ Anahtar, değer ilişkileri tutan koleksiyonlara verilen isimdir. Scalada Map'le
     case (name, age) => println(s"$name, $age yasinda")
   }) // Serkan, 21 yasinda, Gülçin 33 yasinda, Yahya 41 yasinda
 ```
+
+Maplerin genel metodları yukarıda kullanılanlardır. Gördüğünüz üzere bir anahtarın değerine eriştiğimiz zaman bize Option tipinde döner null safety sağlamak amacıyla. Kullandığımız +, ve - operatörleri bizim mapimizin içeriğini değiştirmez iki mapi toplar ve yeni bir map dönderir.
