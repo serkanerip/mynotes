@@ -304,7 +304,7 @@ Maplerin genel metodları yukarıda kullanılanlardır. Gördüğünüz üzere b
 #### Bazı Mutable İşlemler
 
 ```scala
-  val nameAndAgeMap: Map[String, Int] = Map(
+  val nameAndAgeMap = mutable.Map(
     "Serkan" -> 21,
     "Gülçin" -> 33,
     "Yahya" -> 41
