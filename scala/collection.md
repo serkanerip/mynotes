@@ -345,6 +345,27 @@ Range, String, Vector ...
 
 List, Queue, Stack, Stream ...
 
+### Set
+
+Set, benzersiz elemanlara sahip koleksiyon tipidir. Bir koleksiyon ile diğerinin ortak elemanlarını ve ya farklı elemanlarını alma gibi işlemler için kullanılır genelde.
+
+Aynı elemanı eklemeye kalkışırsanız hata almazsınız ancak bir değişiklikte olmaz.
+
+1. **SortedSet**, elemanların sıralı olmasını istediğimiz durumlarda kullanabiliriz.
+2. **BitSet**, SortedSet'ten türer. Int tipinde negatif olmayan elemanları barındırmak için yapılmıştır.
+
+#### Genel Kullanım
+
+```scala
+val randomNumbers = scala.collection.mutable.Set[Int]()
+set += 1 // ekleme
+set -= 1 // cikarma
+set += (2, 3) // coklu ekleme
+set.contains(1) // elemanın kümede olup olmadığını kontrol etmek için
+println(set + (3, 4)) // 2, 3, 4
+```
+
 # Kaynaklar
 
 1. https://www.lihaoyi.com/post/BenchmarkingScalaCollections.html
+2. https://alvinalexander.com/scala/how-to-choose-collection-class-scala-cookbook/
