@@ -153,6 +153,65 @@ class Rational(n: Int, d: Int) {
 - Implementasyonu ve alt sınıfları kaynak kod ile aynı dosyada olmak zorundadır.
 - Compiler bir dosyada tüm implementasyonların yapıldığını bildiği için pattern match gibi kullanımlarda ele alınmayan case var ise önceden uyarır.
 
+## Implicit Class
+
+- Bir sınıfı genişletmek için kullanılır.
+- Varsayalım bir kütüphaneden ve ya bağımlılıktan bir sınıf kullanıyorsunuz ve buna bir davranış daha eklemeniz lazım ancak kaynak koda erişiminiz yok implicitlerle sınıfı modifiye etmeden genişletebilirsiniz.
+
+```scala
+case class Donut(name: String, price: Double, productCode: Option[Long] = None)
+
+object DonutImplicits {
+  implicit class AugmentedDonut(donut: Donut) {
+    def uuid: String = s"dnt-${donut.name.toLowerCase}-${donut.productCode.getOrElse(101)}"
+  }
+}
+
+object Main extends App {
+  import DonutImplicits._
+
+
+  assert(Donut("Vanilla", 1.50).uuid === "dnt-vanilla-101")
+  assert(Donut("Vanilla", 2, Some(1)).uuid === "dnt-vanilla-1")
+}
+```
+
+## Objects
+
+- Nesne, bir sınıf tipinden oluşturulan elemanlara denir, Scalada ayrıyeten Object keywordü vardır. Çeşitli amaçlar için kullanılmaktadır bunlar
+  - Singletons (stateless olan sınıflar yerine object)
+  - Companion Objects (statik metodlar için)
+  - Package Object (sık kullanılan metod ve nesneleri bir paket nesnesi içinde yazarsak herhangi bir prefix kullanmadan kullanabiliriz.)
+- Nesneler arası tip dönüşümü sık kullanılır scalada bunu `.asInstanceOf[donusturulecekTip]` metodu ile yapabilirsiniz.
+- Nesnenin sınıfını öğrenmek icin `.getClass` metodunu kullanabilirsiniz.
+- Bir nesneyi App traiti ile genişletirseniz bu nesne main metodu gibi davranır.
+- Companion Object içinde apply metodunu gerekli tanımlamalar ile oluşturursanız o sınıftan `new` keywordünü kullanmadan nesne üretebilirsiniz.
+
+```scala
+// Singleton Ornegi
+object Utils {
+  def printClassOfObject(x: Any): Unit = println(s"class of object is ${x.getClass}")
+}
+
+// Companion Object Ornegi
+class Pizza(val size: String)
+object Pizza {
+  def apply(): Pizza = new Pizza("M")
+}
+
+// Package Object Ornegi
+// Asagidaki ornekle com.serkanerip.business paketi icerisinde tanimli sinif
+// ve ya Object'lerde checkEmailIsValid metodunu kullanabilirsiniz herhangi bir paket belirteci olmadan
+package com.serkanerip
+
+package object business {
+  def checkEmailIsValid(email: String): Boolean = {
+    val regex = """(?=[^\s]+)(?=(\w+)@([\w\.]+))""".r
+    regex.findFirstIn(email) != None
+  }
+}
+```
+
 ## Generic Types
 
 - Bir sınıfa ve ya fonksiyona tip bağımsız işlem yaptırma gücü kazandırır.
