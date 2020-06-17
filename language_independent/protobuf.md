@@ -19,7 +19,7 @@ Roy Fielding tarafından 2000 yılında webservislerin haberleşmesi için belir
   "Person": {
     "id": 1,
     "name": "Serkan",
-    "birthYear": 1998
+    "age": 22
   }
 }
 ```
@@ -38,7 +38,7 @@ Binary bir protokoldür kolay bir şekilde yazılabilir, fieldların isimleri, t
     message Person {
         int32 id = 1;
         string name = 2;
-        int32 birthOfYear = 3;
+        int32 age = 3;
     }
 ```
 
