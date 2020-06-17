@@ -14,11 +14,11 @@ Roy Fielding tarafından 2000 yılında webservislerin haberleşmesi için belir
 
 ```json
 {
-    "Person": {
-        "id": 1,
-        "name:" "Serkan",
-        "birthYear": 1998
-    }
+  "Person": {
+    "id": 1,
+    "name": "Serkan",
+    "birthYear": 1998
+  }
 }
 ```
 
