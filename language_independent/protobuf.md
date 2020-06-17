@@ -4,7 +4,9 @@ Büyük uygulamalar bir çok servisle çalışır ve bu servisler network üzeri
 
 Servis mimarisi şuanda popüler olan mimaridir monolitik mimariye göre tercih edilmesinin sebebi kolay ölçeklenebilen ve sürdürülebilen uygulamalar geliştirmek.
 
-## Service (Servis)
+Protobuf'da bu senaryoda networkteki kaynak tüketimini azaltmak için geliştirilmiş bir protokoldür.
+
+## Servis
 
 Network üzerinden belli bir mesajlaşma protokolü ile iletişim kuran yazılımlara denir.
 
@@ -40,6 +42,8 @@ Binary bir protokoldür kolay bir şekilde yazılabilir, fieldların isimleri, t
     }
 ```
 
+Protobuf syntaxı hakkında daha detaylı bilgi almak için [bu linke](https://developers.google.com/protocol-buffers/docs/proto3) tıklayabilirsiniz.
+
 ### Proto Yazarken Dikkat Edilmesi Gerekenler
 
 Message ve field isimlerinizi değiştirebilirsiniz kod break eder ama iletişim devam eder ancak field sıraları ve numaraları serialize/deserialize işlemleri için önemlidir bunu değiştirmeniz iletişimi bozar **tabi eğer istemci ve sunucunun her ikisinde de bu işlemi yaparsanız bir sorun olmayacaktır** ancak önerilen bir işlem değildir çünkü bu servisleri durdurmanın mümkün olmadığı senaryolarda vardır.
@@ -50,11 +54,11 @@ Json ve xml ler insanların okuyarak işlem yapmasına dayalı text tabanlı pro
 
 ## Performans Farkları
 
-- Numerik verilerde protobuf, json'a göre daha hızlı encode ve decode yapıyor. 2x-13x arasında değişebiliyor bu performans farkı.
+- Numerik verilerde protobuf, Json'a göre daha hızlı encode ve decode yapıyor. 2x-13x arasında değişebiliyor bu performans farkı.
 
-- String encode/decode işlemlerinde json kütüphaneleri ile yakın sonuçlar alıyor bazılarından geride bile olabiliyor.
+- String encode/decode işlemlerinde Json kütüphaneleri ile yakın sonuçlar alıyor bazılarından geride bile olabiliyor.
 
-- Double, double arraylerde protobuf büyük bir fark atıyor diğer kütüphanelere.
+- Ondalıklı sayılarda protobuf Jsonlara serialize/deserialize'da büyük bir fark atıyor.
 
 Yorumlamalar Tao Wen'in yaptığı benchmark sonuçlarına istinaden yapılmıştır detaylı sonuçlar için kaynaklar kısmından linke gidebilirsiniz.
 
