@@ -1,6 +1,6 @@
 # Kubectl
 
-- Kubectl, k8s clusterlarımızı yönetmek için kullandığımız cli'dır.
+- Kubectl, k8s clusterlarımızı yönetmek için kullandığımız cli'dır. Master içindeki kube-apiserver processinin sağladığı api ile clusterı yönetiriz.
 - Konfigürasyon için kubectl **~/.kube/config** dosyasına bakar. Farklı bir config dosyası belirtmek için **KUBECONFIG** env. variable'ını ve ya --kubeconfig flagini kullanabiliriz.
 - Bu ayar dosyası içinde contextler ve clusterlar hakkında gerekli bilgiler bulunur.
 - **current-context** fieldı ile hangi cluster'ı yöneteceğimizi seçeriz.

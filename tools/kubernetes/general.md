@@ -2,9 +2,21 @@
 
 K8S, açık kaynak bir conteynır şefidir.
 
-## Kubernetes Master
+## Cluster Oluşturmak
 
-Cluster'ı yönetmekle sorumludur. kubectl komutu ile master ile iletişim kurarız.
+Cluster oluşturmak için 3 yöntem bulunur.
+
+1. Cloud providerlar sayesinde kolayca bir cluster oluşturabiliriz. e.g. gcloud, aws, azure
+2. Custom bir şekilde k8s clusterı oluşturabiliriz.
+3. Minikube, aracı ile localde tek node'luk bir cluster oluşturabiliriz development için kullanılır.
+
+## Kubernetes Node
+
+Node, clusterı oluşturan makinalardır(VM's, physical servers, etc).
+
+## Kubernetes Master Node
+
+Cluster'ı yönetmekle sorumludur.
 
 Master node 3 process çalıştırır:
 
@@ -12,9 +24,7 @@ Master node 3 process çalıştırır:
 2. kube-controller-manager
 3. kube-scheluder
 
-## Kubernetes Nodes
-
-Node, cluster içindeki uygulamanızı çalıştıran makinalardır(VM's, physical servers, etc).
+## Kubernetes Non-master Node
 
 Master olmayan nodelar 2 process çalıştırır:
 
@@ -25,17 +35,21 @@ Master olmayan nodelar 2 process çalıştırır:
 
 ## Pods
 
-Containerları soyutlayan bir nesnedir docker ve ya rkt containerları çalıştırır. Podlarda nodelarda bir node'da birden fazla pod olabilir bir podda da birden fazla konteynır. Pod içindeki nodelar aynı ip ve port alanını kullanır, localhost üzerinden iletişim sağlıyabilirler.
-
-K8S'de, direk pod çalıştırmak iyi bir pratik değildir deployment ile bu iş yapılır.
+- Containerları soyutlayan bir nesnedir docker ve ya rkt containerları çalıştırır.
+- Containerlar podların içinde çalışır. Bir pod'da birden fazla container olabilir.
+- Podlar, nodeların içinde çalışır. Bir node'da birden fazla pod olabilir.
+- Pod içindeki containerlar aynı networkü kullanırlar localhost üzerinden iletişim kurabilirler.
+- Podlar, service ile expose edilmediği sürece dışarıya kapalıdırlar. Expose edilmeyen podlara kube-proxy ile erişebiliriz.
+- K8S'de, imperative bir şekilde pod nesnesi oluşturmak iyi bir pratik değildir deployment ile declarative bir şekilde yapılması tavsiye edilir.
 
 ## Deployment
 
-Belirlediğimiz ayarlara göre uygulama conteynırlarından podlar oluşturur ve bu podları ayakta tutmaya ve sayısını korumaya çalışır.
+- Deklaratif, bir şekilde pod ayağa kaldıran bir k8s nesnesidir.
+- Podları yönetir.
 
 ## Service
 
-Podları dışarıya expose etmek için kullanılır.
+- Podları dışarıya expose etmek için kullanılır.
 
 ## Notlar
 
