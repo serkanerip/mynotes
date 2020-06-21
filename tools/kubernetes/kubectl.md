@@ -1,6 +1,6 @@
 # Kubectl
 
-- Kubectl, clusterlarımız üzerinde işlem yapmak için kullandığımız cli'dır.
+- Kubectl, k8s clusterlarımızı yönetmek için kullandığımız cli'dır.
 - **~/.kube/config** dosyası içinde yaml formatında kubectl için gerekli ayarlar bulunmaktadır.
 - Eğer **KUBECONFIG** env. belirtilmişse belirtilen adresteki dosyayı ayar dosyası olarak görür.
 - Bu dosya içerisinde contextler ve clusterlar hakkında gerekli bilgiler bulunur.
