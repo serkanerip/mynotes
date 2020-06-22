@@ -41,6 +41,8 @@ Master olmayan nodelar 2 process çalıştırır:
 - Pod içindeki containerlar aynı networkü kullanırlar localhost üzerinden iletişim kurabilirler.
 - Podlar, service ile expose edilmediği sürece dışarıya kapalıdırlar. Expose edilmeyen podlara kube-proxy ile erişebiliriz.
 - K8S'de, imperative bir şekilde pod nesnesi oluşturmak iyi bir pratik değildir deployment ile declarative bir şekilde yapılması tavsiye edilir.
+- Podlar arasında iletişim için podlara cluster ip almamız gerekir bunuda service ile yaparız, pod için service oluşturduktan sonra servisin ismiyle ya da ipsi ile ulaşabiliriz.
+- Podlara volume mount edebiliriz.
 
 ## Deployment
 

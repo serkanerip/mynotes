@@ -8,3 +8,10 @@
   ```
       gcloud container clusters get-credentials [CLUSTER_NAME]
   ```
+
+## Komutları
+
+1. Apply: Yaml dosyası halindeki konfigürasyonu json'a çevirip api ile nesneleri oluştur eğer daha önce oluşturulmuşsa update eder.
+2. Get: Belirttiğiniz kaynak tipinde oluşturulan kaynakların listesini dönderir. e.g. kubectl get pods
+3. Describe: Kaynak hakkında detaylı bilgi verir. e.g. kubectl describe pod my-pod
+4. Logs: Kaynağın stdout çıktısını gösterir. e.g. kubectl logs my-pod

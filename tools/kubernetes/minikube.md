@@ -14,3 +14,9 @@ curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/miniku
 ```
 minikube start
 ```
+
+## Komutlar
+
+1. service: minikube tarafından 
+
+
