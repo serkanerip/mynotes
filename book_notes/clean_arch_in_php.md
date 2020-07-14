@@ -253,7 +253,7 @@ Yukarıdaki sınıfın srp'yi ihlal ettiği açıkca gözlemlenmektedir. generat
 ### Dependency Inversion Principle
 
 - DIP, High level modüllerin, low level modüllere bağımlı olmaması gerektiğini söyler. Bunun soyutlamalarla yapılması gerektiğini söyler.
-- Sınıfların bir biri ile bağımlılıklarının soyut sınıflarla yapılması gerekiyor. Bu şekilde low level bir yerde değişiklik yaptığımızda buna depend olan diğer yerlerin daha az etkilenmesini sağlarız.
+- Farklı layerlardaki sınıfların bir biri ile bağımlılıklarının soyut sınıflarla yapılması gerekiyor. Bu şekilde low level bir yerde değişiklik yaptığımızda buna depend olan diğer yerlerin daha az etkilenmesini sağlarız.
   
 #### Ornek
 
@@ -267,10 +267,12 @@ Yukarıdaki sınıfın srp'yi ihlal ettiği açıkca gözlemlenmektedir. generat
 
 - Decoupled codebaseler oluşturmak için, bağımlılıkların sadece tek bir yönde olması ve bu yönünde içe doğru olması gerekmektedir.
 - DIP, ile contractların yani interfacelerin sorumluluğunu high level layer almış olur ve sorumluluğun değişmesi ile bağımlılığın yönü de değişir artık low level layer, high lavel layera depend olur çünkü contract(interface)'ın kontrolü high level layerın elindedir artık.
-- Ek olarak sözleşmeler dal'da olsa bile dip uyabiliriz. Bu da sözleşmelerin implementasyona bağımlı olmaması ile sağlanır. Tabi birinci durum daha tercih edilir bir pratiktir.
+- Ek olarak sözleşmeler dal'da olsa bile dip'a uyabiliriz. Bu da sözleşmelerin implementasyona bağımlı olmaması ile sağlanır. Tabi birinci durum daha tercih edilir bir pratiktir.
 
 ![](../assets/aapa.png)
 
 ### Kaynaklar
 
 1. https://www.thoughtfulcode.com/orm-active-record-vs-data-mapper/
+2. https://oncodedesign.com/dependency-inversion-and-assemblies-references/
+3. https://herbertograca.com/2017/09/21/onion-architecture/
