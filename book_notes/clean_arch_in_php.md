@@ -38,7 +38,7 @@ Eğer bunları yapmayı seviyorsanız:
 
 ## Design Patterns
 
-- Yazılımda bilindik problemlerin çözümü için geliştirilen spesifik çözümlere design patterns denir.
+- Yazılımda bilindik problemlerin çözümü için geliştirilen kanıtlanmış çözümlere design patterns denir.
 - Dil spesifik değildir.
 - GOF'un kitabında Creational, Structural ve Behavioral olmak üzere 3 kategoride toplam 23 tane bulunmaktadır.
 
@@ -119,7 +119,7 @@ public class VehicleFactory : IVehicleFactory
 }
 ```
 
-#### Factory Method Pattern
+#### Abstract Factory Pattern
 
 Bir biriyle ilişkili ve ya alakalı farklı interface ve ya abstract classtan türetilen sınıfların nesnelerinin oluşturulmasından sorumludur.
 
@@ -138,7 +138,7 @@ Bir biriyle ilişkili ve ya alakalı farklı interface ve ya abstract classtan t
   1. Active Record:
      - Veritabanı işlemleri ile ilgilenme sorumluluğuda modelin kendisine verilir.
      - Basit ve öğrenmesi kolaydır.
-     - Ancak modellerinizin nesnelerinizin veritabanı ile sıkı bağlı olmasına sebeb olur.
+     - Ancak modellerimizin veritabanı ile arasındaki ilişkinin **tightly coupled** olmasına sebeb olur.
      - Test etmesi zordur.
      - Performans sorunlarına yol açar yük artınca.
   2. Data Mapper
@@ -213,12 +213,63 @@ class InvoicingService {
 
 Yukarıdaki sınıfın srp'yi ihlal ettiği açıkca gözlemlenmektedir. generateAndSendInvoices fonksiyonu isminden kendini belli etmektedir ancak her zaman bu şekilde isimden belli etmezler kendilerini kodun içine bakmadıkça. generateInvoice metodu mesela aynı zamanda faturayı oluşturduktan sonra yollamaktadırda.
 
-#### SRP Neden Önemlidir ?
+#### SRP Neden Önemli ?
 
 - Aynı nesne altında birden fazla sorumluluk bunları alakaları olmasa bile bir birine sıkı bağımlı yapar.
 - Bu bir sınıfı bozmadan refaktor etmeyi zorlaştırır aksi taktirde sorumluluklar için farklı sınıflarımız olduğunda kodun diğer parçalarının çoğunu risklerden korur.
 - Kodun daha kolay test edilebilmesini sağlar.
 - Genel olarak küçük sınıfların refaktor ve test edilmesi daha kolaydır. Ve hata oluşturmaya daha az meyillidirler.
+
+### Open/Closed Principle
+
+- OCP, sınıfların değişime kapalı genişletilmeye açık olmalıdır.
+- Strategy pattern, ocp'ye iyi bir örnektir. Yeni bir adaptör sınıf yazarak bir şeyi değiştirmeden genişletebiliriz.
+
+#### OCP Neden Önemli ? 
+
+- Var olan bir kodu değiştirmek istenmeyen yan etkilere ve problemlere neden olur. Ancak genişletildiği taktirde ortaya çıkacak risklerden korumuş oluruz.
+
+### Liskov Substition Principle
+
+- LSP, aynı interface'e sahip concrete sınıflardan hangisi kullanılırsa kullanılsın programın nihayi davranışı değişmemeli hepsi aynı davranışı göstermelidir.
+- Concrete sınıfların tabi ki implementasyonları farklı olabilir ancak sonuç olarak hepsinin beklenenin dışında bir davranışa sahip olmaması gerekir aksi taktirde farklı implementasyonlarda istenmeyen yan etkiler ve sorunlar ortaya çıkar.
+- LSP, ile OCP bir birini tamamlayan prensiplerdir.
+
+#### LSP Neden Önemli ? 
+
+- LSP, kolayca refaktor edilebilen kodlar yazabilmek için önemlidir.Var olan hiçbir kodu modifiye etmeden uygulamamızı zenginleştirmemizi sağlar.
+
+### Interface Segregation Principle
+
+- ISP, sınıfların ihtiyacı olmayan metodları implemente etmek zorunda olmamalarını savunur.
+- Bu genellikle, fat interfaceler yüzünden oluşur. Uygulamanızı genişletmek için yeni bir adapter yazdığınızda bu interface içinde eğer bu sınıfın ihtiyacı olmayan metodlar var ise bu interface'de, interfacenizi parçalamanız lazım demektir.
+- Bu prensip aslında interfacelerin SRP'ye uyması gerektiğini söyler.
+
+#### ISP Neden Önemli ?
+
+- Interface'in implementasyonunu kullanan bütün client kodlar bu interface'in bütün metodları ile coupled hale gelir ister kullansın ister kullanmasın.**ISP'nin amacı decoupled kod yazmayı sağlamaktır.**
+
+
+### Dependency Inversion Principle
+
+- DIP, High level modüllerin, low level modüllere bağımlı olmaması gerektiğini söyler. Bunun soyutlamalarla yapılması gerektiğini söyler.
+- Sınıfların bir biri ile bağımlılıklarının soyut sınıflarla yapılması gerekiyor. Bu şekilde low level bir yerde değişiklik yaptığımızda buna depend olan diğer yerlerin daha az etkilenmesini sağlarız.
+  
+#### Ornek
+
+- Business layer high level bir layerdır, data access layer ise sadece verinin nasıl getirileceği ve saklanacağı ile alakalı detayları içerir.
+- Bu yüzden business layer, data access layerına depend olmamalı. Peki bunu nasıl sağlarız ?
+- Business layer'da veri saklama ve getirme işlemleri için bir contract yani interface oluştururuz ve bizim business layer sınıflarımız ihtiyacı olduğunda buna depend olmalıdırlar. Bu sayede business layerımız, data access layerımıza bağımlı olmamış olur.
+
+![](./../assets/dip_1.png)
+
+#### DIP Neden Önemli ? 
+
+- Decoupled codebaseler oluşturmak için, bağımlılıkların sadece tek bir yönde olması ve bu yönünde içe doğru olması gerekmektedir.
+- DIP, ile contractların yani interfacelerin sorumluluğunu high level layer almış olur ve sorumluluğun değişmesi ile bağımlılığın yönü de değişir artık low level layer, high lavel layera depend olur çünkü contract(interface)'ın kontrolü high level layerın elindedir artık.
+- Ek olarak sözleşmeler dal'da olsa bile dip uyabiliriz. Bu da sözleşmelerin implementasyona bağımlı olmaması ile sağlanır. Tabi birinci durum daha tercih edilir bir pratiktir.
+
+![](../assets/aapa.png)
 
 ### Kaynaklar
 
