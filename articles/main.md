@@ -46,3 +46,11 @@ Daha iyi ram yönetimi için:
 5. Dispose pattern’i uygulamalıyız;
 6. GC.Collect’i manuel çağırmamalıyız
 ```
+
+## 1 November 2020
+
+* https://medium.com/devopsturkiye/serverless-yapilara-giris-25fb35378823
+
+```
+Serverles, saas,paas,faas,caas,iaas hakkında bilgi veriyor.
+```
