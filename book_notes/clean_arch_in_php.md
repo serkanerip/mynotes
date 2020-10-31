@@ -225,7 +225,7 @@ Yukarıdaki sınıfın srp'yi ihlal ettiği açıkca gözlemlenmektedir. generat
 - OCP, sınıfların değişime kapalı genişletilmeye açık olmalıdır.
 - Strategy pattern, ocp'ye iyi bir örnektir. Yeni bir adaptör sınıf yazarak bir şeyi değiştirmeden genişletebiliriz.
 
-#### OCP Neden Önemli ? 
+#### OCP Neden Önemli ?
 
 - Var olan bir kodu değiştirmek istenmeyen yan etkilere ve problemlere neden olur. Ancak genişletildiği taktirde ortaya çıkacak risklerden korumuş oluruz.
 
@@ -235,7 +235,7 @@ Yukarıdaki sınıfın srp'yi ihlal ettiği açıkca gözlemlenmektedir. generat
 - Concrete sınıfların tabi ki implementasyonları farklı olabilir ancak sonuç olarak hepsinin beklenenin dışında bir davranışa sahip olmaması gerekir aksi taktirde farklı implementasyonlarda istenmeyen yan etkiler ve sorunlar ortaya çıkar.
 - LSP, ile OCP bir birini tamamlayan prensiplerdir.
 
-#### LSP Neden Önemli ? 
+#### LSP Neden Önemli ?
 
 - LSP, kolayca refaktor edilebilen kodlar yazabilmek için önemlidir.Var olan hiçbir kodu modifiye etmeden uygulamamızı zenginleştirmemizi sağlar.
 
@@ -249,12 +249,11 @@ Yukarıdaki sınıfın srp'yi ihlal ettiği açıkca gözlemlenmektedir. generat
 
 - Interface'in implementasyonunu kullanan bütün client kodlar bu interface'in bütün metodları ile coupled hale gelir ister kullansın ister kullanmasın.**ISP'nin amacı decoupled kod yazmayı sağlamaktır.**
 
-
 ### Dependency Inversion Principle
 
 - DIP, High level modüllerin, low level modüllere bağımlı olmaması gerektiğini söyler. Bunun soyutlamalarla yapılması gerektiğini söyler.
 - Farklı layerlardaki sınıfların bir biri ile bağımlılıklarının soyut sınıflarla yapılması gerekiyor. Bu şekilde low level bir yerde değişiklik yaptığımızda buna depend olan diğer yerlerin daha az etkilenmesini sağlarız.
-  
+
 #### Ornek
 
 - Business layer high level bir layerdır, data access layer ise sadece verinin nasıl getirileceği ve saklanacağı ile alakalı detayları içerir.
@@ -263,13 +262,52 @@ Yukarıdaki sınıfın srp'yi ihlal ettiği açıkca gözlemlenmektedir. generat
 
 ![](./../assets/dip_1.png)
 
-#### DIP Neden Önemli ? 
+#### DIP Neden Önemli ?
 
 - Decoupled codebaseler oluşturmak için, bağımlılıkların sadece tek bir yönde olması ve bu yönünde içe doğru olması gerekmektedir.
 - DIP, ile contractların yani interfacelerin sorumluluğunu high level layer almış olur ve sorumluluğun değişmesi ile bağımlılığın yönü de değişir artık low level layer, high lavel layera depend olur çünkü contract(interface)'ın kontrolü high level layerın elindedir artık.
 - Ek olarak sözleşmeler dal'da olsa bile dip'a uyabiliriz. Bu da sözleşmelerin implementasyona bağımlı olmaması ile sağlanır. Tabi birinci durum daha tercih edilir bir pratiktir.
 
 ![](../assets/aapa.png)
+
+## Dependency Injection
+
+- OOP'de couplinge yol açan en sık rastlanan nedenlerden biri, bir sınıftan nesne üretiminin bir başka sınıf içinde direk yapılmasıdır.
+- Bunu kolayca sınıf içerisinde new anahtar sözcüğünü aratarak bulabiliriz.
+
+```php
+class CustomerController {
+    public function viewAction() {
+        $repository = new CustomerRepository();
+        $customer = $repository->getById(1001);
+        return $customer;
+    }
+}
+```
+
+- Yukarıda örnekte CustomerController sınıfının, CustomerRepository sınıfıyla arasındaki bağımlılık sıkıdır(tightly coupled). Yani CustomerController sınıfı, CustomerRepository sınıfı olmadan çalışmaz.
+
+**Bu şekilde nesne oluşturmanın bazı kötü yanları vardır:**
+
+1. **Değişiklik yapmayı zorlaştırır.**
+2. **Test yazmayı zorlaştırır.** CustomerController sınıfı için birim testi yazmaya kalktığımızda içindeki CustomerRepository de test kapsamına girmiş olur buda birim testten çıkar integration testine girer çünkü buradaki CustomerRepository sınıfı veritabanı işlerini üstlenen sınıftır. Coupling, komponentleri izole bir şekilde test etmeyi zorlaştırır.
+3. **Bağımlılıklar üzerinde kontrolümüz yoktur.** Bir bağımlılığımızın farklı şartlarda farkı bir şekilde oluşturulması gerektiğini düşünelim bunu ona bağımlı sınıfların içinde yapmak kullanışsız bir pratiktir.
+
+Bu sebebler büyük problemlere yol açabilir özellikle büyük projelerde. Bu geliştiricilerin ileride küçük bir değişiklik yapmasını bile engelleyebilir.
+
+## Inversion Of Control
+
+- IOC, bağımlılıkların oluşturulması ve konfigüre edilme işlemlerini bağımlı olan sınıftan alıp harici bir araca verme işlemidir.
+- Harici araçlardan en popüler iki tanesi şunlardır: the service locator pattern, dependency injection.
+
+## Örnek Uygulama Adımları
+
+1. İlk önce domain model layerını oluşturuyoruz. Burada hiçbir şeye bağımlılığı olmayan sınıflarımız olacaktır.
+2. Entitiylerimizin hepsinde id değişkeni olacağı için abstract bir class yazacağız id değişkeni olan ve diğer entitylerimiz bunu extends edecekler.
+3. Domain model sınıflarımız için test yazmıyoruz çünkü bunlar sadece getter ve setter metodlara sahip, ve eğer bir problem oluşacaksa muhtemelen burada olmayacaktır.
+4. Sıradaki layerımız domain services. Domain service katmanı sadece domain modal katmanına bağımlı olabilir.
+5. Bu katmanda; repository interfacelerimiz, factorylerimiz ve servis sınıflarımız olacak.
+6. BDD yöntemi ile InvoiceFactory sınıfımızı ve metodu yazıp implementasyonunu bırakıyoruz ve testlerini yazıyoruz fail eden testlerden beklediğimiz davranışları sınıfımızda implemente ediyoruz.
 
 ### Kaynaklar
 
