@@ -54,3 +54,9 @@ Daha iyi ram yönetimi için:
 ```
 Serverles, saas,paas,faas,caas,iaas hakkında bilgi veriyor.
 ```
+
+* https://levelup.gitconnected.com/design-patterns-structural-patterns-of-design-classes-and-objects-79d58a6519b
+
+```
+Article about structural design patterns.
+```
