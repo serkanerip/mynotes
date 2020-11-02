@@ -60,3 +60,20 @@ ES, hem bir database hemde bir text search engine dir. Ancak asıl amacı birinc
 * Full text search
 * Visualizing Data
 * Scraping and Combining Public Data
+* Recommending Engines
+* Auto complete functionality
+
+
+## The Elastick Stack (ELK)
+
+ES, ELK nın ana bileşenidir. Veri depolama, süsleme, analiz etme ve görselleştirme gibi işlevleri yapan bir grup open source araçtan oluşuyor. 
+
+
+
+### Kibana
+
+Kibana, veri yönetme ve görselleştirme aracıdır. Genellikle log analizi için kullanılır.
+
+### Logstash
+
+Logstash is used to aggregate and process data and send it to Elasticsearch. It is an open-source, server-side data processing pipeline that ingests data from a multitude of sources simultaneously, transforms it, and then sends it to collect.
