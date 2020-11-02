@@ -60,3 +60,11 @@ Serverles, saas,paas,faas,caas,iaas hakkında bilgi veriyor.
 ```
 Article about structural design patterns.
 ```
+
+## 2 November 2020
+
+* https://www.kizgibikodla.com/news/elasticsearch-nedir-nasil-kurulur/
+* http://www.borakasmer.com/elasticsearch-nedir/
+* https://www.blexin.com/en-US/Article/Blog/How-to-integrate-ElasticSearch-in-ASPNET-Core-70
+* https://www.objectrocket.com/blog/elasticsearch/top-elasticsearch-use-cases/
+* https://www.knowi.com/blog/what-is-elastic-search/
