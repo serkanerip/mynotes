@@ -68,3 +68,8 @@ Article about structural design patterns.
 * https://www.blexin.com/en-US/Article/Blog/How-to-integrate-ElasticSearch-in-ASPNET-Core-70
 * https://www.objectrocket.com/blog/elasticsearch/top-elasticsearch-use-cases/
 * https://www.knowi.com/blog/what-is-elastic-search/
+
+
+## 4 November 2020
+
+* https://levelup.gitconnected.com/dependency-injection-vs-inversion-of-control-e8a9fcc7d9f7
