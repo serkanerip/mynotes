@@ -73,3 +73,10 @@ Article about structural design patterns.
 ## 4 November 2020
 
 * https://levelup.gitconnected.com/dependency-injection-vs-inversion-of-control-e8a9fcc7d9f7
+* https://medium.com/@ademcatamak/event-sourcing-6683f3f28b5d
+* https://blog.kloia.com/es-event-sourcing-cqrs-road-1a4e6cc797ec
+* https://tsh.io/blog/cqrs-event-sourcing-php-1/
+* https://tsh.io/blog/cqrs-event-sourcing-implementation-php-2/
+* https://tsh.io/blog/cqrs-event-sourcing-implementation-php-3/
+* https://medium.com/trendyol-tech/take-a-look-at-cqrs-and-event-sourcing-with-ddd-part-2-be87574629c3
+* https://medium.com/ssense-tech/mvc-to-microservices-from-a-students-perspective-c29f9cf799d5
